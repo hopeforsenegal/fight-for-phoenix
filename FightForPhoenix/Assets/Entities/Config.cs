@@ -20,8 +20,8 @@ public class Config : ScriptableObject
     public string[] planetHitDialouge;
     public string[] planetLostDialouge;
     public string[] planetWonDialouge;
-    public string[] planetLosingTooFastDialouge;
-    public string[] planetWinningTooFastDialouge;
+    public string[] planetLosingTooFastDialouge;    
+    public string[] planetWinningTooFastDialouge;   // We don't know when ships blow up yet
     /*
     // option 1
     public Sprite[] sprites;

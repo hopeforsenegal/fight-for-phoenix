@@ -102,8 +102,13 @@ public class GameManager : MonoBehaviour
             if (m_PreviousNumberOfHits != NumberOfHits) {
                 m_PreviousNumberOfHits = NumberOfHits;
 
-                var index = Random.Range(0, config.planetHitDialouge.Length);
-                ingameDialogueText.text = config.planetHitDialouge[index];
+                if (timeUntilDialogueDisappear > 0.01) {
+                    var index = Random.Range(0, config.planetLosingTooFastDialouge.Length);
+                    ingameDialogueText.text = config.planetLosingTooFastDialouge[index];
+                } else {
+                    var index = Random.Range(0, config.planetHitDialouge.Length);
+                    ingameDialogueText.text = config.planetHitDialouge[index];
+                }
                 timeUntilDialogueDisappear = config.TimeUntilDialogueDisappear;
             }
 

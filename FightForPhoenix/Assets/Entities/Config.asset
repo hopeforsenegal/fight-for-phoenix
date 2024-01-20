@@ -32,8 +32,17 @@ MonoBehaviour:
   - Ah, game over man. Game over.
   - I am getting a factory reset for this.
   - Oh, we are so #@!<$*.
-  planetWonDialouge: []
-  planetLosingTooFastDialouge: []
+  planetWonDialouge:
+  - Mission Complete. Great job, Rookie.
+  - "Mission Successful. General\u2019s gonna love this."
+  - "Great work, hero. Keep it up, and we\u2019ll be rolling in glory when we get
+    home."
+  - Holy hell, kid. Great work.
+  planetLosingTooFastDialouge:
+  - "At this rate, we\u2019re both getting court-martialed."
+  - The hell are you doing, Rookie?
+  - "You\u2019re lucky I got Audio Censor on mid-level."
+  - Who taught you how to fly and shoot?!? Helen Keller?!?
   planetWinningTooFastDialouge: []
   MaxNumberOfPlanetHealth: 10
   Speed: 55
