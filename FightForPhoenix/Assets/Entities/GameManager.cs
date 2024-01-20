@@ -71,10 +71,7 @@ public class GameManager : MonoBehaviour
             }
         }
         if (Actions.TestSuperSpeed) {
-            m_PowerUpType = PowerUpType.ExtraSpeed;
-            m_PowerUpTimeRemaining = config.ExtraSpeedTime;
-            m_Player.TrailRenderer.enabled = true;
-            m_Player.TrailRenderer.startColor = config.ExtraSpeedColor;
+            ObtainedSuperSpeed();
         }
         if (Actions.TestPowerupDrop) {
             DropPowerup(new Vector3(0, 10, 0));
@@ -122,6 +119,14 @@ public class GameManager : MonoBehaviour
                 });
             });
         }
+    }
+
+    public void ObtainedSuperSpeed()
+    {
+        m_PowerUpType = PowerUpType.ExtraSpeed;
+        m_PowerUpTimeRemaining = config.ExtraSpeedTime;
+        m_Player.TrailRenderer.enabled = true;
+        m_Player.TrailRenderer.startColor = config.ExtraSpeedColor;
     }
 
     protected void FixedUpdate()
