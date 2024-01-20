@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     public GameObject explosion;
     public Transform phoenix;
     public Text m_TimerText;
+    public Text ingameDialogueText;
 
     GameState m_GameState;
     TestPlayerControlledEnemy TestControlledPlayerEnemies;
@@ -40,6 +41,8 @@ public class GameManager : MonoBehaviour
     float m_TimeRemaining;
     PowerUpType m_PowerUpType;
     float m_PowerUpTimeRemaining;
+    int m_PreviousNumberOfHits;
+    float timeUntilDialogueDisappear;
 
     protected void Start()
     {
@@ -82,10 +85,23 @@ public class GameManager : MonoBehaviour
         GameState current = m_GameState;
         m_TimeRemaining -= Time.deltaTime;
         m_PowerUpTimeRemaining -= Time.deltaTime;
+        timeUntilDialogueDisappear -= Time.deltaTime;
 
         if (m_GameState == GameState.Playing) {
             if (m_TimerText) {
                 m_TimerText.text = string.Format("{0:0.00}", m_TimeRemaining);
+            }
+            if (ingameDialogueText) {
+                if (timeUntilDialogueDisappear <= 0) {
+                    ingameDialogueText.text = string.Empty;
+                }
+                if (m_PreviousNumberOfHits != NumberOfHits) {
+                    m_PreviousNumberOfHits = NumberOfHits;
+
+                    var index = Random.Range(0, config.planetHitDialouge.Length);
+                    ingameDialogueText.text = config.planetHitDialouge[index];
+                    timeUntilDialogueDisappear = config.TimeUntilDialogueDisappear;
+                }
             }
 
             // Just so we can continually mess with the trail length for now

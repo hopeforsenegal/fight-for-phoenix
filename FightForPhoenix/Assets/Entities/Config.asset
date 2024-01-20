@@ -13,6 +13,22 @@ MonoBehaviour:
   m_Name: Config
   m_EditorClassIdentifier: 
   TimeUntilNextPhase: 60
+  planetHitDialouge:
+  - Our objective is getting hit.
+  - "Bogey\u2019s hitting the VIP."
+  - "Defend the planet or we\u2019re both in trouble."
+  - Shape up, Rookie.
+  - Move it or lose it, soldier.
+  - We gotta defend the objective, kid.
+  - "Planet\u2019s getting roughed up. Tighten up, Rookie."
+  - "At this rate, we\u2019re both getting court-martialed."
+  - The hell are you doing, Rookie?
+  - "You\u2019re lucky I got Audio Censor on mid-level."
+  - Who taught you how to fly and shoot?!? Helen Keller?!?
+  planetLostDialouge: []
+  planetWonDialouge: []
+  planetLosingTooFastDialouge: []
+  planetWinningTooFastDialouge: []
   MaxNumberOfPlanetHealth: 10
   Speed: 55
   TrailLength: 0.5

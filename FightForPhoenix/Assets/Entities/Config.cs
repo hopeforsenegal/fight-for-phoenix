@@ -15,6 +15,14 @@ public class Config : ScriptableObject
     // Game
     public int TimeUntilNextPhase = 60;
 
+    // Dialouge
+    public int TimeUntilDialogueDisappear = 3;
+    public string[] planetHitDialouge;
+    public string[] planetLostDialouge;
+    public string[] planetWonDialouge;
+    public string[] planetLosingTooFastDialouge;
+    public string[] planetWinningTooFastDialouge;
+
     // Planet
     public int MaxNumberOfPlanetHealth = 10;
 
