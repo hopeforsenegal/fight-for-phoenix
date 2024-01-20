@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2449633425831636171}
   - component: {fileID: 3934160005469831166}
   - component: {fileID: 1765108358210614019}
-  - component: {fileID: 7028166994555872206}
+  - component: {fileID: 6198210632639251804}
   m_Layer: 0
-  m_Name: Plasma
+  m_Name: PlasmaSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,7 +122,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7028166994555872206
+--- !u!114 &6198210632639251804
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,5 +134,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4d9326482ca56446a8b828702bb5116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Direction: {x: 1, y: 0, z: 0}
-  MoveSpeed: 4
+  Direction: {x: -1, y: 0, z: 0}
+  MoveSpeed: 2
