@@ -16,10 +16,10 @@ MonoBehaviour:
   MaxNumberOfPlanetHealth: 10
   Speed: 55
   TrailLength: 0.5
+  DropRate: 0.2
+  PowerUpDropPrefab: {fileID: 7319834146705539355, guid: 97c1427c759ce4563a43d013fcb12922, type: 3}
   ExtraSpeedSpeed: 20
   ExtraSpeedTime: 10
   ExtraSpeedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  Target: {fileID: 0}
   WaveSize: 0
   PlanetSeeking: 0
-  MoveDirection: {x: 0, y: 0, z: 0}
