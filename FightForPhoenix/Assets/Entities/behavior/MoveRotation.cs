@@ -15,6 +15,5 @@ public class MoveRotation : MonoBehaviour
         if (Input.GetKey(KeyCode.D)) direction = -1;
         var angle = direction * speed * Time.fixedDeltaTime;
         transform.RotateAround(target.position, Vector3.forward, angle);
-        Debug.Log("rot:" + transform.rotation);
     }
 }

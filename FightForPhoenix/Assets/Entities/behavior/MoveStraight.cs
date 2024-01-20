@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveStraight : MonoBehaviour
 {
     Rigidbody2D _rb;
-    public float MoveSpeed = 1000f;
+    public float MoveSpeed = 2f;
 
     void Start() {
         _rb = GetComponent<Rigidbody2D>();
@@ -13,6 +13,6 @@ public class MoveStraight : MonoBehaviour
 
     void FixedUpdate()
     {
-        _rb.AddForce(transform.up * MoveSpeed);
+        _rb.velocity = transform.up * MoveSpeed;
     }
 }
