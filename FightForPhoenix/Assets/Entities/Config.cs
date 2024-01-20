@@ -37,7 +37,9 @@ public class Config : ScriptableObject
     public bool PlanetSeeking;
 
     public Vector3 WaveMove(Vector3 direction, float counter, bool sine=true) {
-        return new Vector3(0f, Mathf.Sin(counter),0f) * WaveSize;
+        float slideDirection;
+        slideDirection = sine ? Mathf.Sin(counter) : Mathf.Cos(counter);
+        return new Vector3(0f, slideDirection,0f) * WaveSize;
     }
 
 

@@ -24,7 +24,7 @@ public class TestEnem2 : MonoBehaviour
         transform.position += 
             new Vector3(enemyBase.Speed * direction.x * Time.deltaTime,transform.position.y,0f);
         transform.position = 
-            new Vector3(transform.position.x,enemyBase.WaveMove(direction, test).y,0f);
+            new Vector3(transform.position.x,enemyBase.WaveMove(direction, test, false).y,0f);
         //velocity = transform.position;
         //transform.position = enemyBase.WaveMove(direction, test);
         //velocity += enemyBase.Speed * direction * Time.deltaTime;
