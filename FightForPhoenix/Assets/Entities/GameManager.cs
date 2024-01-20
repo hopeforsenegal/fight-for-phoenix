@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour
     public Transform phoenix;
     public Text m_TimerText;
     public Text ingameDialogueText;
+    public AudioSource musicSource;
+    public AudioSource SFXSource;
+
 
     GameState m_GameState;
     TestPlayerControlledEnemy TestControlledPlayerEnemies;
@@ -44,6 +47,10 @@ public class GameManager : MonoBehaviour
     float m_PowerUpTimeRemaining;
     int m_PreviousNumberOfHits;
     float timeUntilDialogueDisappear;
+
+    float maxTime = 2f;
+    float curTime = 0f;
+    bool canShoot = true;
 
     protected void Start()
     {
@@ -59,6 +66,9 @@ public class GameManager : MonoBehaviour
         foreach (var e in enemyCollisions) {
             e.dropRate = config.DropRate;
         }
+
+        musicSource.clip = config.Gameplay;
+        musicSource.Play();
     }
 
     protected void Update()
@@ -149,6 +159,10 @@ public class GameManager : MonoBehaviour
             LeanTween.scale(tilemapGameObject, Vector3.zero, 2).setOnComplete(() =>
             {
                 Debug.Log("Planet death animation complete");
+
+                musicSource.clip = config.Lose;
+                musicSource.Play();
+
                 LeanTween.scale(explosion, Vector3.one * 5, 0.75f).setOnComplete(() =>
                 {
                     Debug.Log("Now maybe show the Game over screen... after a fade to and from black?");
@@ -157,9 +171,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    float maxTime = 2f;
-    float curTime = 0f;
-    bool canShoot = true;
     public void PlayerShoot() {
         if(Actions.Shoot && canShoot){
             GameObject shot = Instantiate(plasmaShot, 

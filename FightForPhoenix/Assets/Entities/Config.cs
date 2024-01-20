@@ -14,6 +14,11 @@ public class Config : ScriptableObject
 {
     // Game
     public int TimeUntilNextPhase = 60;
+    public AudioClip Intro; // @TODO: Get this into Kiki's scene eventually
+    public AudioClip Gameplay;
+    public AudioClip Level_Transition;  // @TODO: We don't have this yet
+    public AudioClip Lose;
+    public AudioClip Menu;
 
     // Dialouge
     public int TimeUntilDialogueDisappear = 3;
@@ -21,7 +26,7 @@ public class Config : ScriptableObject
     public string[] planetLostDialouge;
     public string[] planetWonDialouge;
     public string[] planetLosingTooFastDialouge;    
-    public string[] planetWinningTooFastDialouge;   // We don't know when ships blow up yet
+    public string[] planetWinningTooFastDialouge;   // @TODO: We don't know when ships blow up yet
     /*
     // option 1
     public Sprite[] sprites;
