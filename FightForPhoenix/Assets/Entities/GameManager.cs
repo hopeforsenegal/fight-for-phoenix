@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 // We could populate these actions from the Config if we really wanted to
 public static class Actions
@@ -22,10 +23,12 @@ public class GameManager : MonoBehaviour
 
     public Config config;
     public GameObject tilemapGameObject;
+    public Text m_TimerText;
 
     GameState m_GameState;
     TestPlayerControlledEnemy TestControlledPlayerEnemies;
     Player m_Player;
+    float m_TimeRemaining;
     bool m_HasPowerUp;
 
     protected void Start()
@@ -34,6 +37,7 @@ public class GameManager : MonoBehaviour
         m_GameState = GameState.Playing;
         TestControlledPlayerEnemies = FindObjectOfType<TestPlayerControlledEnemy>();
         m_Player = FindObjectOfType<Player>();
+        m_TimeRemaining = config.TimeUntilNextPhase;
     }
 
     protected void Update()
@@ -51,9 +55,16 @@ public class GameManager : MonoBehaviour
         }
 
         GameState current = m_GameState;
+        m_TimeRemaining -= Time.deltaTime;
 
+        if (m_GameState == GameState.Playing) {
+            m_TimerText.text = string.Format("{0:0.00}", m_TimeRemaining);
+        }
         if (NumberOfHits > config.MaxNumberOfPlanetHealth) {
             m_GameState = GameState.Lost;
+        }
+        if (m_TimeRemaining <= 0) {
+            m_GameState = GameState.Won;
         }
 
         var hasChangedState = current != m_GameState;
