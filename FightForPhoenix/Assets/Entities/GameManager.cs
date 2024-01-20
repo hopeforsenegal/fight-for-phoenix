@@ -19,6 +19,7 @@ public static class Actions
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] GameObject plasmaShot;
     public static int NumberOfHits { get; set; }
 
     enum GameState
