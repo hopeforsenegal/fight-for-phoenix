@@ -1,4 +1,13 @@
+using System;
 using UnityEngine;
+
+[Flags]
+public enum PowerUpType
+{
+    None = 0,
+
+    ExtraSpeed = 1 << 0,
+}
 
 [CreateAssetMenu(fileName = "Config", menuName = "ScriptableObjects/Config", order = 1)]
 public class Config : ScriptableObject
@@ -11,7 +20,14 @@ public class Config : ScriptableObject
 
     // Player
     public int Speed = 100;
-    public int PowerSpeed = 20;
+
+    // Power up
+    public float TrailLength = 0.5f;
+
+    public int ExtraSpeedSpeed = 20;
+    public int ExtraSpeedTime = 10;
+    public Color ExtraSpeedColor = Color.yellow;
+
 
     //Enemy baseline
     enum EnemyType { DodgesLeftRight, Forward}
