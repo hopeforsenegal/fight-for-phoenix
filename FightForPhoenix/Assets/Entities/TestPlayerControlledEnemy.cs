@@ -1,10 +1,8 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class Bullet : MonoBehaviour
+public class TestPlayerControlledEnemy : MonoBehaviour
 {
-    public static int NumberOfHits { get; set; }
-
     public GameObject tilemapGameObject;
     public Rigidbody2D Rigidbody { get; private set; }
     Tilemap tilemap;
@@ -25,7 +23,8 @@ public class Bullet : MonoBehaviour
                 hitPosition.x = hit.point.x - 0.01f * hit.normal.x;
                 hitPosition.y = hit.point.y - 0.01f * hit.normal.y;
                 tilemap.SetTile(tilemap.WorldToCell(hitPosition), null);
-                NumberOfHits++;
+                GameManager.NumberOfHits++;
+                Debug.Log($"Got hit!!");
             }
         }
     }

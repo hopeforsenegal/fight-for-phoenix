@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 // We could populate these from the Config if we really wanted to
@@ -11,6 +12,8 @@ public static class Actions
 
 public class GameManager : MonoBehaviour
 {
+    public static int NumberOfHits { get; set; }
+
     enum GameState
     {
         Playing,
@@ -21,13 +24,13 @@ public class GameManager : MonoBehaviour
     public Config config;
 
     GameState m_GameState;
-    Bullet m_Bullet;
+    TestPlayerControlledEnemy m_Bullet;
 
     void Start()
     {
-        Bullet.NumberOfHits = 0;
+        NumberOfHits = 0;
         m_GameState = GameState.Playing;
-        m_Bullet = FindObjectOfType<Bullet>();
+        m_Bullet = FindObjectOfType<TestPlayerControlledEnemy>();
     }
 
     void Update()
@@ -41,8 +44,9 @@ public class GameManager : MonoBehaviour
             m_Bullet.Rigidbody.velocity = v;
         }
 
-        if (Bullet.NumberOfHits > config.MaxNumberOfPlanetHealth) {
+        if (NumberOfHits > config.MaxNumberOfPlanetHealth) {
             m_GameState = GameState.Lost;
+            Debug.Log($"{GameState.Lost}");
         }
 
         if (m_GameState == GameState.Won) {
