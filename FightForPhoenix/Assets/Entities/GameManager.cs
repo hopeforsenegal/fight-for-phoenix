@@ -124,8 +124,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    float maxTime = 3f;
+    float curTime = 0f;
+    bool canShoot = true;
     public void PlayerShoot() {
-
+        if(Actions.Shoot && canShoot){
+            Object shot = Instantiate(plasmaShot);
+            canShoot = false;
+        }
+    }
+    public void ShotTimer() {
+        if(!canShoot) {
+            curTime += Time.deltaTime;
+        }
+        if(curTime >= maxTime) {
+            curTime = 0f;
+            canShoot = true;
+        }
     }
 
     public void ObtainedSuperSpeed()
