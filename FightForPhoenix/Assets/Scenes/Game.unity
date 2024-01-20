@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a935ad7d0cc014e52b112af79c3a1196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilemapGameObject: {fileID: 1120745429}
 --- !u!4 &107096007
 Transform:
   m_ObjectHideFlags: 0
@@ -179,7 +180,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.036186635, y: 0.027139962}
