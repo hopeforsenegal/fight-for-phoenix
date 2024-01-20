@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class MoveStraight : MonoBehaviour
 {
-    public Vector3 Direction = Vector3.left;
-    public float MoveSpeed = 2f;
+    Rigidbody2D _rb;
+    public float MoveSpeed = 1000f;
+
+    void Start() {
+        _rb = GetComponent<Rigidbody2D>();
+    }
 
     void FixedUpdate()
     {
-        transform.position += Vector3.right * 2f * Time.deltaTime;
-        //transform.Translate(Vector3.forward * MoveSpeed * Time.deltaTime);
+        _rb.AddForce(transform.up * MoveSpeed);
     }
 }
