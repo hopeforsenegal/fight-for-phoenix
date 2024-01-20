@@ -25,14 +25,30 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (tilemap.gameObject == collision.gameObject) {
+        // Convert the hit position to a cell position
+        Vector3 hitPosition3 = other.transform.position;
+        Vector3Int cellPosition3 = tilemap.WorldToCell(hitPosition3);
+
+        // Get the tile at the cell position
+        TileBase tile = tilemap.GetTile(cellPosition3);
+        if (tile != null) {
+            Debug.Log("Hit tile: " + tile.name);
+        }
+
+        if (tilemap.gameObject == other.gameObject) {
             Debug.Log("Hit tile");
-            foreach (var hit in collision.contacts) {
+
+            Vector3 hitPosition = other.transform.position;
+            Vector3Int cellPosition2 = tilemap.WorldToCell(hitPosition);
+            Debug.Log($"cell2 {cellPosition2}");
+
+            //foreach (var hit in other.contacts) {
+            { 
                 Vector3 hitWorldPosition = Vector3.zero;
-                hitWorldPosition.x = hit.point.x + 0.01f * hit.normal.x;
-                hitWorldPosition.y = hit.point.y + 0.01f * hit.normal.y;
+               // hitWorldPosition.x = hit.point.x + 0.01f * hit.normal.x;
+               // hitWorldPosition.y = hit.point.y + 0.01f * hit.normal.y;
                 Debug.Log($"hit {hitWorldPosition}");
 
                 Vector3Int cellPosition = tilemap.WorldToCell(hitWorldPosition - new Vector3Int(0, 1, 0));
@@ -43,14 +59,22 @@ public class Bullet : MonoBehaviour
 
                 Debug.Log($"bounds {bounds}");
 
-                for (int x = 0; x < bounds.size.x; x++) {
-                    for (int y = 0; y < bounds.size.y; y++) {
-                        TileBase tile = allTiles[x + y * bounds.size.x];
-                        if (tile != null) {
-                            Debug.Log($"x:{x} y:{y} tile:{tile.name} ");
-                        } else {
-                            Debug.Log($"x:{x} y:{y} tile: (null)");
+
+                for (int x = tilemap.cellBounds.xMin; x < tilemap.cellBounds.xMax; x++) {
+                    for (int y = tilemap.cellBounds.yMin; y < tilemap.cellBounds.yMax; y++) {
+                        Vector3Int localPlace = new Vector3Int(x, y, (int)tilemap.transform.position.z);
+                        //Vector3 place = tileMap.CellToWorld(localPlace);
+                        //TileBase tile = allTiles[x + y * bounds.size.x];
+                        Debug.Log($"localPlace {localPlace}");
+                        if (cellPosition == localPlace) {
+                            Debug.Log("Hey");
                         }
+                        //if (tilemap.HasTile(localPlace))
+                        //    if (tile != null) {
+                        //    Debug.Log($"x:{x} y:{y} tile:{tile.name} ");
+                        //} else {
+                        //    Debug.Log($"x:{x} y:{y} tile: (null)");
+                        //}
                     }
                 }
 
