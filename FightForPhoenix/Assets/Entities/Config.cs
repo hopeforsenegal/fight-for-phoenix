@@ -23,6 +23,7 @@ public class Config : ScriptableObject
 
     // Power up
     public float TrailLength = 0.5f;
+    public float DropRate = 0.2f;
 
     public int ExtraSpeedSpeed = 20;
     public int ExtraSpeedTime = 10;
