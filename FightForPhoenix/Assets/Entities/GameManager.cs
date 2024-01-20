@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     int m_PreviousNumberOfHits;
     float timeUntilDialogueDisappear;
 
-    const float maxTime = 2f;
+    const float maxTime = 0.2f;
     float curTime = 0f;
     bool canShoot = true;
 
