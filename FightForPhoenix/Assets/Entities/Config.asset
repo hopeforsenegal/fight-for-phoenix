@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Config
   m_EditorClassIdentifier: 
   MaxNumberOfPlanetHealth: 10
+  Speed: 55
+  PowerSpeed: 20

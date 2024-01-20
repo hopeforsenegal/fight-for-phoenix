@@ -3,7 +3,7 @@ using UnityEngine;
 // We could populate these from the Config if we really wanted to
 public static class Actions
 {
-    public static bool Left => Input.GetKey(KeyCode.A);
+    public static bool Left  => Input.GetKey(KeyCode.A);
     public static bool Right => Input.GetKey(KeyCode.D);
 
     public static bool Shoot => Input.GetKey(KeyCode.Space);
@@ -71,6 +71,6 @@ public class GameManager : MonoBehaviour
         if (Actions.Right) direction = -1;
         var speed = m_HasPowerUp ? config.Speed + config.PowerSpeed : config.Speed;
         var angle = direction * speed * Time.fixedDeltaTime;
-        m_Player.transform.RotateAround(m_Player.planet.transform.position, Vector3.forward, angle);
+        m_Player.transform.RotateAround(m_Player.phoenix.transform.position, Vector3.forward, angle);
     }
 }
