@@ -1,4 +1,13 @@
+using System;
 using UnityEngine;
+
+[Flags]
+public enum PowerUpType
+{
+    None = 0,
+
+    ExtraSpeed = 1 << 0,
+}
 
 [CreateAssetMenu(fileName = "Config", menuName = "ScriptableObjects/Config", order = 1)]
 public class Config : ScriptableObject
@@ -11,7 +20,14 @@ public class Config : ScriptableObject
 
     // Player
     public int Speed = 100;
-    public int PowerSpeed = 20;
+
+    // Power up
+    public float TrailLength = 0.5f;
+
+    public int ExtraSpeedSpeed = 20;
+    public int ExtraSpeedTime = 10;
+    public Color ExtraSpeedColor = Color.yellow;
+
 
     //Enemy baseline
     enum EnemyType { DodgesLeftRight, Forward}
@@ -23,15 +39,21 @@ public class Config : ScriptableObject
         return curPos = Mathf.Sin(counter) * WaveSize * direction;
     }
 
-    public (Quaternion, Vector3) LookAtPlanet(Transform callingEntity, Transform entityTarget) {
-        Vector3 dir;
-        Quaternion newRot;
-        var offset = 90f;
+
+    public Vector2 GetDirectionVector2(Transform callingEntity, Transform entityTarget) {
         Vector2 facingDirection = Target.position - callingEnemy.position;
-        facingDirection.Normalize();
-        dir = new Vector3(facingDirection.x, facingDirection.y, 0f);
+        return facingDirection.Normalize();
+    }
+    //split Vec3 direction from lookAtPlanet to simplify
+    public Vector3 GetDirectionVector3(Transform callingEntity, Transform entityTarget) {
+        Vector2 baseDirection = GetDirectionVector2(callingEntity, entityTarget);
+        return new Vector3(baseDirection.x, baseDirection.y, 0f);
+    }
+    public Quaternion LookAtPlanet(Transform callingEntity, Transform entityTarget) {
+        var offset = 90f;
+        Vector2 facingDirection = GetDirectionVector2(callingEntity, entityTarget);
         float angle = Mathf.Atan2(facingDirection.y, facingDirection.x) * Mathf.Rad2Deg;
-        newRot = Quaternion.Euler(Vector3.forward * (angle + offset));
-        return (newRot, dir);
+        return Quaternion.Euler(Vector3.forward * (angle + offset));
+
     }
 }

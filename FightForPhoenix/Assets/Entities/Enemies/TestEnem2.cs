@@ -5,8 +5,14 @@ using UnityEngine;
 public class TestEnem2 : MonoBehaviour
 {
     [SerializeField] Config enemyBase;
+    [SerializeField] Transform target;
+    Vector3 direction;
 
     float test = 0f;
+
+    void Start {
+        var startingSet = enemyBase.LookAtPlanet(transform, target);
+    }
 
     void Update()
     {

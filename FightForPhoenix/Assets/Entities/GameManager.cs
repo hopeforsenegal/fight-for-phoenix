@@ -12,6 +12,8 @@ public static class Actions
     // Take these out once we like these sequences
     public static bool TestLose => Input.GetKey(KeyCode.Alpha1);
     public static bool TestWin  => Input.GetKey(KeyCode.Alpha2);
+
+    public static bool TestSuperSpeed => Input.GetKey(KeyCode.Alpha3);
 }
 
 public class GameManager : MonoBehaviour
@@ -35,7 +37,8 @@ public class GameManager : MonoBehaviour
     TestPlayerControlledEnemy TestControlledPlayerEnemies;
     Player m_Player;
     float m_TimeRemaining;
-    bool m_HasPowerUp;
+    PowerUpType m_PowerUpType;
+    float m_PowerUpTimeRemaining;
 
     protected void Start()
     {
@@ -43,6 +46,7 @@ public class GameManager : MonoBehaviour
         m_GameState = GameState.Playing;
         TestControlledPlayerEnemies = FindObjectOfType<TestPlayerControlledEnemy>();
         m_Player = FindObjectOfType<Player>();
+        m_Player.TrailRenderer.enabled = false;
         m_TimeRemaining = config.TimeUntilNextPhase;
     }
 
@@ -59,12 +63,22 @@ public class GameManager : MonoBehaviour
                 TestControlledPlayerEnemies.Rigidbody.velocity = v;
             }
         }
+        if (Actions.TestSuperSpeed) {
+            m_PowerUpType = PowerUpType.ExtraSpeed;
+            m_PowerUpTimeRemaining = config.ExtraSpeedTime;
+            m_Player.TrailRenderer.enabled = true;
+            m_Player.TrailRenderer.startColor = config.ExtraSpeedColor;
+        }
 
         GameState current = m_GameState;
         m_TimeRemaining -= Time.deltaTime;
+        m_PowerUpTimeRemaining -= Time.deltaTime;
 
         if (m_GameState == GameState.Playing) {
             m_TimerText.text = string.Format("{0:0.00}", m_TimeRemaining);
+
+            // Just so we can continually mess with the trail length for now
+            m_Player.TrailRenderer.time = config.TrailLength;
         }
         if (NumberOfHits > config.MaxNumberOfPlanetHealth) {
             m_GameState = GameState.Lost;
@@ -72,6 +86,12 @@ public class GameManager : MonoBehaviour
         if (m_TimeRemaining <= 0) {
             m_GameState = GameState.Won;
         }
+        if (m_PowerUpTimeRemaining <= 0) {
+            m_PowerUpType = PowerUpType.None;
+            m_Player.TrailRenderer.enabled = false;
+            m_Player.TrailRenderer.startColor = Color.clear;
+        }
+
 
         var hasChangedState = current != m_GameState;
         if (hasChangedState && m_GameState == GameState.Won || Actions.TestWin) {
@@ -98,7 +118,7 @@ public class GameManager : MonoBehaviour
         var direction = 0;
         if (Actions.Left)  direction = 1;
         if (Actions.Right) direction = -1;
-        var speed = m_HasPowerUp ? config.Speed + config.PowerSpeed : config.Speed;
+        var speed = m_PowerUpType == PowerUpType.ExtraSpeed ? config.Speed + config.ExtraSpeedSpeed : config.Speed;
         var angle = direction * speed * Time.fixedDeltaTime;
         m_Player.transform.RotateAround(phoenix.transform.position, Vector3.forward, angle);
 
