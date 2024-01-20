@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c018b7f62c90d48739df3cd69a4ac9df, type: 3}
   m_Name: EnemyTest
   m_EditorClassIdentifier: 
+  TimeUntilNextPhase: 60
   MaxNumberOfPlanetHealth: 10
-  Speed: 100
-  PowerSpeed: 20
-  Target: {fileID: 0}
-  WaveSize: 0
+  Speed: 2
+  TrailLength: 0.5
+  DropRate: 0.2
+  PowerUpDropPrefab: {fileID: 0}
+  ExtraSpeedSpeed: 20
+  ExtraSpeedTime: 10
+  ExtraSpeedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  WaveSize: 10
   PlanetSeeking: 0
-  MoveDirection: {x: 0, y: 0, z: 0}
