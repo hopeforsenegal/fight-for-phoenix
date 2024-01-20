@@ -44,7 +44,6 @@ public class Config : ScriptableObject
         return new Vector3(0f, slideDirection,0f) * WaveSize;
     }
 
-
     public Vector2 GetDirectionVector2(Transform callingEntity, Transform entityTarget) {
         Vector2 facingDirection = entityTarget.position - callingEntity.position;
         facingDirection.Normalize();

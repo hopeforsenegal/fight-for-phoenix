@@ -77,6 +77,8 @@ public class GameManager : MonoBehaviour
             DropPowerup(new Vector3(0, 10, 0));
         }
 
+        PlayerShoot(); //test shoot
+
         GameState current = m_GameState;
         m_TimeRemaining -= Time.deltaTime;
         m_PowerUpTimeRemaining -= Time.deltaTime;
@@ -119,6 +121,10 @@ public class GameManager : MonoBehaviour
                 });
             });
         }
+    }
+
+    public void PlayerShoot() {
+
     }
 
     public void ObtainedSuperSpeed()

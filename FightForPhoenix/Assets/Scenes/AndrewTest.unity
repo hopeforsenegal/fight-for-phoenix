@@ -237,7 +237,7 @@ MonoBehaviour:
   config: {fileID: 11400000, guid: 4fbc88fe70af640ffa0b4f5110b749f5, type: 2}
   tilemapGameObject: {fileID: 796078630}
   explosion: {fileID: 0}
-  phoenix: {fileID: 0}
+  phoenix: {fileID: 206039101}
   m_TimerText: {fileID: 0}
 --- !u!4 &629719556
 Transform:
@@ -832,10 +832,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5219623436374909544, guid: 5ff39ff6c60aeac4abcf3594f8ad2c1a, type: 3}
-      propertyPath: phoenix
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5219623436374909545, guid: 5ff39ff6c60aeac4abcf3594f8ad2c1a, type: 3}
       propertyPath: m_Name
       value: Player
@@ -886,3 +882,60 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ff39ff6c60aeac4abcf3594f8ad2c1a, type: 3}
+--- !u!1001 &7028166994555872204
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2529542309010317929, guid: 802716960c19f1c47a5ebbb87ac1f71d, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529542309010317929, guid: 802716960c19f1c47a5ebbb87ac1f71d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529542309010317929, guid: 802716960c19f1c47a5ebbb87ac1f71d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.629
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529542309010317929, guid: 802716960c19f1c47a5ebbb87ac1f71d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529542309010317929, guid: 802716960c19f1c47a5ebbb87ac1f71d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529542309010317929, guid: 802716960c19f1c47a5ebbb87ac1f71d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529542309010317929, guid: 802716960c19f1c47a5ebbb87ac1f71d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529542309010317929, guid: 802716960c19f1c47a5ebbb87ac1f71d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529542309010317929, guid: 802716960c19f1c47a5ebbb87ac1f71d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529542309010317929, guid: 802716960c19f1c47a5ebbb87ac1f71d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529542309010317929, guid: 802716960c19f1c47a5ebbb87ac1f71d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583896376079884698, guid: 802716960c19f1c47a5ebbb87ac1f71d, type: 3}
+      propertyPath: m_Name
+      value: Plasma
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 802716960c19f1c47a5ebbb87ac1f71d, type: 3}
