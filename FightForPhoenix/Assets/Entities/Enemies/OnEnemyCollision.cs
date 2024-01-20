@@ -5,7 +5,10 @@ public class OnEnemyCollision : MonoBehaviour
     protected void Awake()
     {
         var c = GetComponent<Collider2D>();
-        Debug.Assert(c != null, "missing collider");
+        if (c == null) {
+            Debug.LogWarning("Hey! add the appropiate collider!!!!!");
+            gameObject.AddComponent<BoxCollider2D>();
+        }
     }
 
     protected void OnCollisionEnter2D(Collision2D other)

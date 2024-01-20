@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Die : MonoBehaviour
 {
-    void OnCollisionEnter2D(Collider2D other) {
-        Destroy(gameObject)
+    void OnCollisionEnter2D(Collision2D other) {
+        Destroy(gameObject);
     }
 }
