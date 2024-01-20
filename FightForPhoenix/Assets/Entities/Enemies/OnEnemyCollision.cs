@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class OnEnemyCollision : MonoBehaviour
 {
+    public float dropRate;
+
     protected void Awake()
     {
         var c = GetComponent<Collider2D>();
@@ -15,5 +17,14 @@ public class OnEnemyCollision : MonoBehaviour
     {
         Destroy(gameObject);
         Debug.Log($"enemy named '{name}' blew up!");
+
+        //if (Random.value <= dropRate) {
+        { 
+            Debug.Log("We should drop a power up");
+
+            var powerup = PowerUpDrop.CreatePowerup("Test");
+            powerup.transform.position = other.transform.position;
+            //GameObject.cr
+        }
     }
 }
