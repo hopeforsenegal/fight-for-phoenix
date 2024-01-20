@@ -3,7 +3,7 @@ using UnityEngine;
 // We could populate these from the Config if we really wanted to
 public static class Actions
 {
-    public static bool Left => Input.GetKey(KeyCode.A);
+    public static bool Left  => Input.GetKey(KeyCode.A);
     public static bool Right => Input.GetKey(KeyCode.D);
 
     public static bool Shoot => Input.GetKey(KeyCode.Space);
@@ -11,6 +11,8 @@ public static class Actions
 
 public class GameManager : MonoBehaviour
 {
+    public static int NumberOfHits { get; set; }
+
     enum GameState
     {
         Playing,
@@ -21,28 +23,35 @@ public class GameManager : MonoBehaviour
     public Config config;
 
     GameState m_GameState;
-    Bullet m_Bullet;
+    TestPlayerControlledEnemy TestControlledPlayerEnemies;
+    Player m_Player;
+    bool m_HasPowerUp;
 
-    void Start()
+    protected void Start()
     {
-        Bullet.NumberOfHits = 0;
+        NumberOfHits = 0;
         m_GameState = GameState.Playing;
-        m_Bullet = FindObjectOfType<Bullet>();
+        TestControlledPlayerEnemies = FindObjectOfType<TestPlayerControlledEnemy>();
+        m_Player = FindObjectOfType<Player>();
     }
 
-    void Update()
+    protected void Update()
     {
-        if (Actions.Left) {
-            Vector3 v = -m_Bullet.transform.right * 1;  // -transform.right = left
-            m_Bullet.Rigidbody.velocity = v;
-        }
-        if (Actions.Right) {
-            Vector3 v = transform.right * 1;            // transform.right = right
-            m_Bullet.Rigidbody.velocity = v;
+        // Test Stuff
+        if (TestControlledPlayerEnemies) {
+            if (Actions.Left) {
+                Vector3 v = -TestControlledPlayerEnemies.transform.right * 1;  // -transform.right = left
+                TestControlledPlayerEnemies.Rigidbody.velocity = v;
+            }
+            if (Actions.Right) {
+                Vector3 v = transform.right * 1;            // transform.right = right
+                TestControlledPlayerEnemies.Rigidbody.velocity = v;
+            }
         }
 
-        if (Bullet.NumberOfHits > config.MaxNumberOfPlanetHealth) {
+        if (NumberOfHits > config.MaxNumberOfPlanetHealth) {
             m_GameState = GameState.Lost;
+            Debug.Log($"{GameState.Lost}");
         }
 
         if (m_GameState == GameState.Won) {
@@ -53,9 +62,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    protected void FixedUpdate()
     {
         // We should move player phsyics in here
         // once we have enemy ships
+        var direction = 0;
+        if (Actions.Left)  direction = 1;
+        if (Actions.Right) direction = -1;
+        var speed = m_HasPowerUp ? config.Speed + config.PowerSpeed : config.Speed;
+        var angle = direction * speed * Time.fixedDeltaTime;
+        m_Player.transform.RotateAround(m_Player.phoenix.transform.position, Vector3.forward, angle);
     }
 }
