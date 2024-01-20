@@ -4,6 +4,8 @@ public class OnEnemyCollision : MonoBehaviour
 {
     public float dropRate;
 
+    private GameManager m_GameManager;
+
     protected void Awake()
     {
         var c = GetComponent<Collider2D>();
@@ -11,6 +13,7 @@ public class OnEnemyCollision : MonoBehaviour
             Debug.LogWarning("Hey! add the appropiate collider!!!!!");
             gameObject.AddComponent<BoxCollider2D>();
         }
+        m_GameManager = FindObjectOfType<GameManager>();
     }
 
     protected void OnCollisionEnter2D(Collision2D other)
@@ -19,8 +22,7 @@ public class OnEnemyCollision : MonoBehaviour
         Debug.Log($"enemy named '{name}' blew up!");
 
         if (Random.value <= dropRate) {
-            // we will figure this out later because callbacks are annoying
-            // GameManager.DropPowerup(other.transform.position);
+            m_GameManager.DropPowerup(other.transform.position);
         }
     }
 }

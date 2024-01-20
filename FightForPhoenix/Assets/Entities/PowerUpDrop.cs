@@ -1,17 +1,24 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PowerUpDrop : MonoBehaviour
 {
-    public SpriteRenderer SpriteRenderer { get; private set; }
+    private GameManager m_GameManager;
 
     void Awake()
     {
-        SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        m_GameManager = FindObjectOfType<GameManager>();
     }
-
-    public static PowerUpDrop CreatePowerup(string name)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        var drop = new GameObject(name, typeof(PowerUpDrop));
-        return drop.GetComponent<PowerUpDrop>();
+        var hasHitPlayer = other.GetComponent<Player>() != null;
+        var hasHitPlanet = other.GetComponent<Tilemap>() != null;
+        if (hasHitPlanet || hasHitPlayer){
+            Debug.Log($"Power up destroyed!");
+            Destroy(gameObject);
+            if (hasHitPlayer) {
+                m_GameManager.ObtainedSuperSpeed();
+            }
+        }       
     }
 }
