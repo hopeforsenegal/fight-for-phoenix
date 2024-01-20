@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 // We could populate these actions from the Config if we really wanted to
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
     public Transform phoenix;
     public Text m_TimerText;
     public Text ingameDialogueText;
+
     public AudioSource musicSource;
     public AudioSource SFXSource;
 
@@ -48,7 +50,7 @@ public class GameManager : MonoBehaviour
     int m_PreviousNumberOfHits;
     float timeUntilDialogueDisappear;
 
-    float maxTime = 2f;
+    const float maxTime = 2f;
     float curTime = 0f;
     bool canShoot = true;
 
@@ -213,5 +215,28 @@ public class GameManager : MonoBehaviour
         Debug.Log("We should drop a power up");
 
         var go = Instantiate(config.PowerUpDropPrefab, position, Quaternion.identity);
+    }
+
+    internal void OnEnemyCollision(OnEnemyCollision onEnemyCollision, Collision2D other)
+    {
+        Destroy(onEnemyCollision.gameObject);
+        Debug.Log($"enemy named '{onEnemyCollision.name}' blew up!");
+
+        SFXSource.clip = config.Explosion;
+        SFXSource.Play();
+
+        if (Random.value <= config.DropRate) {
+            DropPowerup(other.transform.position);
+        }
+    }
+
+    internal void OnPlanetCollision(Tilemap tilemap, Vector3Int hitPosition)
+    {
+        //tilemap.SetTile(tilemap.WorldToCell(hitPosition), null);
+        NumberOfHits++;
+        Debug.Log($"Got hit!!");
+
+        SFXSource.clip = config.Explosion;
+        SFXSource.Play();
     }
 }

@@ -7,12 +7,16 @@ public class TestPlayerControlledEnemy : MonoBehaviour
     public Rigidbody2D Rigidbody { get; private set; }
     Tilemap tilemap;
 
+    private GameManager m_GameManager;
+
     void Start()
     {
         tilemap = tilemapGameObject.GetComponent<Tilemap>();
         Rigidbody = GetComponent<Rigidbody2D>();
         Debug.Assert(tilemap != null, "You forget to add a Tiilemap to the scene");
         Debug.Assert(Rigidbody != null, "You forget to add a rigidbody to this game object");
+
+        m_GameManager = FindObjectOfType<GameManager>();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -23,8 +27,7 @@ public class TestPlayerControlledEnemy : MonoBehaviour
                 hitPosition.x = hit.point.x - 0.01f * hit.normal.x;
                 hitPosition.y = hit.point.y - 0.01f * hit.normal.y;
                 tilemap.SetTile(tilemap.WorldToCell(hitPosition), null);
-                GameManager.NumberOfHits++;
-                Debug.Log($"Got hit!!");
+                m_GameManager.OnPlanetCollision(tilemap, tilemap.WorldToCell(hitPosition));
             }
         }
     }

@@ -18,11 +18,6 @@ public class OnEnemyCollision : MonoBehaviour
 
     protected void OnCollisionEnter2D(Collision2D other)
     {
-        Destroy(gameObject);
-        Debug.Log($"enemy named '{name}' blew up!");
-
-        if (Random.value <= dropRate) {
-            m_GameManager.DropPowerup(other.transform.position);
-        }
+        m_GameManager.OnEnemyCollision(this, other);
     }
 }
