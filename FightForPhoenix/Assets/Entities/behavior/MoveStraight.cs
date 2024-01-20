@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class MoveStraight : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Vector3 Direction = Vector3.left;
+    public float MoveSpeed = 2f;
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        transform.position += MoveSpeed * Direction * Time.deltaTime;
     }
 }
