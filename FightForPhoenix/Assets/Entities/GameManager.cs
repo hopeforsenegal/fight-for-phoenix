@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// We could populate these from the Config if we really wanted to
+// We could populate these actions from the Config if we really wanted to
 public static class Actions
 {
     public static bool Left  => Input.GetKey(KeyCode.A);
@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     }
 
     public Config config;
+    public GameObject tilemapGameObject;
 
     GameState m_GameState;
     TestPlayerControlledEnemy TestControlledPlayerEnemies;
@@ -49,28 +50,37 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        GameState current = m_GameState;
+
         if (NumberOfHits > config.MaxNumberOfPlanetHealth) {
             m_GameState = GameState.Lost;
-            Debug.Log($"{GameState.Lost}");
         }
 
-        if (m_GameState == GameState.Won) {
+        var hasChangedState = current != m_GameState;
+        if (hasChangedState && m_GameState == GameState.Won) {
+            Debug.Log($"{m_GameState}");
             // What happens when we win?
         }
-        if (m_GameState == GameState.Lost) {
+        if (hasChangedState && m_GameState == GameState.Lost) {
+            Debug.Log($"{m_GameState}");
             // What happens when we lose?
+            LeanTween.scale(tilemapGameObject, Vector3.zero, 2).setOnComplete(() =>
+            {
+                Debug.Log("Planet death animation complete");
+            });
         }
     }
 
     protected void FixedUpdate()
     {
-        // We should move player phsyics in here
-        // once we have enemy ships
+        // Player Movement
         var direction = 0;
         if (Actions.Left)  direction = 1;
         if (Actions.Right) direction = -1;
         var speed = m_HasPowerUp ? config.Speed + config.PowerSpeed : config.Speed;
         var angle = direction * speed * Time.fixedDeltaTime;
         m_Player.transform.RotateAround(m_Player.phoenix.transform.position, Vector3.forward, angle);
+
+        // Other
     }
 }
