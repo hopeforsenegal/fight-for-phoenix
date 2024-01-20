@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72cdadba85dd696428565c2780ec833a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phoenix: {fileID: 0}
+  phoenix: {fileID: 184295244}
 --- !u!70 &224567077
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
