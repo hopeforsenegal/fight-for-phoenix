@@ -1,12 +1,13 @@
 using System;
 using UnityEngine;
 
-[Flags]
 public enum PowerUpType
 {
-    None = 0,
+    None,    // Normal shot normal movement
 
-    ExtraSpeed = 1 << 0,
+    ExtraSpeed,
+    Shotgun,
+    Laser,
 }
 enum EnemyType
 {
