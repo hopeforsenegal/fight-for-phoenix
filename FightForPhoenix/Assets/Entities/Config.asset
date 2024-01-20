@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Config
   m_EditorClassIdentifier: 
   TimeUntilNextPhase: 60
+  TimeUntilDialogueDisappear: 3
   planetHitDialouge:
   - Our objective is getting hit.
   - "Bogey\u2019s hitting the VIP."
@@ -25,7 +26,12 @@ MonoBehaviour:
   - The hell are you doing, Rookie?
   - "You\u2019re lucky I got Audio Censor on mid-level."
   - Who taught you how to fly and shoot?!? Helen Keller?!?
-  planetLostDialouge: []
+  planetLostDialouge:
+  - Mission Failed. There is no next time.
+  - "Mission Failed. General\u2019s not gonna be happy about this."
+  - Ah, game over man. Game over.
+  - I am getting a factory reset for this.
+  - Oh, we are so #@!<$*.
   planetWonDialouge: []
   planetLosingTooFastDialouge: []
   planetWinningTooFastDialouge: []
