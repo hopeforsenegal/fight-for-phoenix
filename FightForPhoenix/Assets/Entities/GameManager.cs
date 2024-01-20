@@ -50,8 +50,8 @@ public class GameManager : MonoBehaviour
     int m_PreviousNumberOfHits;
     float timeUntilDialogueDisappear;
 
-    const float maxTime = 0.2f;
-    float curTime = 0f;
+    const float fireRate = 0.2f;
+    float currentFireTimer = 0f;
     bool canShoot = true;
 
     protected void Start()
@@ -182,10 +182,10 @@ public class GameManager : MonoBehaviour
     }
     public void ShotTimer() {
         if(!canShoot) {
-            curTime += Time.deltaTime;
+            currentFireTimer += Time.deltaTime;
         }
-        if(curTime >= maxTime) {
-            curTime = 0f;
+        if(currentFireTimer >= fireRate) {
+            currentFireTimer = 0f;
             canShoot = true;
         }
     }
