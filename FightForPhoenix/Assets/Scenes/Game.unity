@@ -477,7 +477,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72cdadba85dd696428565c2780ec833a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phoenix: {fileID: 184295244}
 --- !u!70 &224567077
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -761,6 +760,7 @@ MonoBehaviour:
   config: {fileID: 11400000, guid: 4fbc88fe70af640ffa0b4f5110b749f5, type: 2}
   tilemapGameObject: {fileID: 1629256829}
   explosion: {fileID: 1404439664}
+  phoenix: {fileID: 184295244}
   m_TimerText: {fileID: 128551187}
 --- !u!4 &637083240
 Transform:

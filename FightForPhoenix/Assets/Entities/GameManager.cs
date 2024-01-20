@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public Config config;
     public GameObject tilemapGameObject;
     public GameObject explosion;
+    public Transform phoenix;
     public Text m_TimerText;
 
     GameState m_GameState;
@@ -99,7 +100,7 @@ public class GameManager : MonoBehaviour
         if (Actions.Right) direction = -1;
         var speed = m_HasPowerUp ? config.Speed + config.PowerSpeed : config.Speed;
         var angle = direction * speed * Time.fixedDeltaTime;
-        m_Player.transform.RotateAround(m_Player.phoenix.transform.position, Vector3.forward, angle);
+        m_Player.transform.RotateAround(phoenix.transform.position, Vector3.forward, angle);
 
         // Other
     }

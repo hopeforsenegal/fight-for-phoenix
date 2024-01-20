@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c018b7f62c90d48739df3cd69a4ac9df, type: 3}
   m_Name: Config
   m_EditorClassIdentifier: 
-  MaxNumberOfPlanetHealth: 2
+  TimeUntilNextPhase: 60
+  MaxNumberOfPlanetHealth: 10
   Speed: 55
   PowerSpeed: 20
