@@ -12,6 +12,15 @@
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
 
+#ignore folders by default
+**/*
+#add folders
+!FightForPhoenix/
+!Assets/
+!*.unity
+!*.cs
+!Entities/
+
 # Recordings can get excessive in size
 /[Rr]ecordings/
 !.gitignore
