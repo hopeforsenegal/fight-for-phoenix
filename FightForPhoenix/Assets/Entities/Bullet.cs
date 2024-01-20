@@ -3,27 +3,18 @@ using UnityEngine.Tilemaps;
 
 public class Bullet : MonoBehaviour
 {
-    // This will break once there are multple tile maps
+    public static int NumberOfHits { get; set; }
+
     public GameObject tilemapGameObject;
+    public Rigidbody2D Rigidbody { get; private set; }
     Tilemap tilemap;
 
     void Start()
     {
-        tilemap = FindObjectOfType<Tilemap>();
+        tilemap = tilemapGameObject.GetComponent<Tilemap>();
+        Rigidbody = GetComponent<Rigidbody2D>();
         Debug.Assert(tilemap != null, "You forget to add a Tiilemap to the scene");
-    }
-
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.A)) {
-            Vector3 v = -transform.right * 1;  // -transform.right = left
-            GetComponent<Rigidbody2D>().velocity = v;
-        }
-
-        if (Input.GetKey(KeyCode.D)) {
-            Vector3 v = transform.right * 1;  // -transform.right = left
-            GetComponent<Rigidbody2D>().velocity = v;
-        }
+        Debug.Assert(Rigidbody != null, "You forget to add a rigidbody to this game object");
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -34,6 +25,7 @@ public class Bullet : MonoBehaviour
                 hitPosition.x = hit.point.x - 0.01f * hit.normal.x;
                 hitPosition.y = hit.point.y - 0.01f * hit.normal.y;
                 tilemap.SetTile(tilemap.WorldToCell(hitPosition), null);
+                NumberOfHits++;
             }
         }
     }
