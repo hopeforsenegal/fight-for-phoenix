@@ -25,8 +25,9 @@ public class Config : ScriptableObject
 
 
     public Vector2 GetDirectionVector2(Transform callingEntity, Transform entityTarget) {
-        Vector2 facingDirection = Target.position - callingEnemy.position;
-        return facingDirection.Normalize();
+        Vector2 facingDirection = entityTarget.position - callingEntity.position;
+        facingDirection.Normalize();
+        return facingDirection;
     }
     //split Vec3 direction from lookAtPlanet to simplify
     public Vector3 GetDirectionVector3(Transform callingEntity, Transform entityTarget) {

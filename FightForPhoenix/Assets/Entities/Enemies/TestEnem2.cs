@@ -10,14 +10,14 @@ public class TestEnem2 : MonoBehaviour
 
     float test = 0f;
 
-    void Start {
-        var startingSet = enemyBase.LookAtPlanet(transform, target);
-    }
+    //void Start {
+        //var startingSet = enemyBase.LookAtPlanet(transform, target);
+    //}
 
     void Update()
     {
         test += Time.deltaTime;
-        transform.position = enemyBase.WaveMove(transform.position, test);
+        //transform.position = enemyBase.WaveMove(transform.position, test);
         //sin
         //test += Time.deltaTime;
         //transform.position = new Vector3(Mathf.Sin(test), 0.0f, 0.0f);
