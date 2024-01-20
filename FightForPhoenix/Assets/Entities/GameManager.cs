@@ -85,7 +85,9 @@ public class GameManager : MonoBehaviour
         m_PowerUpTimeRemaining -= Time.deltaTime;
 
         if (m_GameState == GameState.Playing) {
-            m_TimerText.text = string.Format("{0:0.00}", m_TimeRemaining);
+            if (m_TimerText) {
+                m_TimerText.text = string.Format("{0:0.00}", m_TimeRemaining);
+            }
 
             // Just so we can continually mess with the trail length for now
             m_Player.TrailRenderer.time = config.TrailLength;
