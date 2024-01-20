@@ -8,6 +8,10 @@ public static class Actions
     public static bool Right => Input.GetKey(KeyCode.D);
 
     public static bool Shoot => Input.GetKey(KeyCode.Space);
+
+    // Take these out once we like these sequences
+    public static bool TestLose => Input.GetKey(KeyCode.Alpha1);
+    public static bool TestWin  => Input.GetKey(KeyCode.Alpha2);
 }
 
 public class GameManager : MonoBehaviour
@@ -23,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     public Config config;
     public GameObject tilemapGameObject;
+    public GameObject explosion;
     public Text m_TimerText;
 
     GameState m_GameState;
@@ -68,16 +73,20 @@ public class GameManager : MonoBehaviour
         }
 
         var hasChangedState = current != m_GameState;
-        if (hasChangedState && m_GameState == GameState.Won) {
+        if (hasChangedState && m_GameState == GameState.Won || Actions.TestWin) {
             Debug.Log($"{m_GameState}");
             // What happens when we win?
         }
-        if (hasChangedState && m_GameState == GameState.Lost) {
+        if (hasChangedState && m_GameState == GameState.Lost || Actions.TestLose) {
             Debug.Log($"{m_GameState}");
             // What happens when we lose?
             LeanTween.scale(tilemapGameObject, Vector3.zero, 2).setOnComplete(() =>
             {
                 Debug.Log("Planet death animation complete");
+                LeanTween.scale(explosion, Vector3.one * 5, 0.75f).setOnComplete(() =>
+                {
+                    Debug.Log("Now maybe show the Game over screen... after a fade to and from black?");
+                });
             });
         }
     }
