@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     GameState m_GameState;
     TestPlayerControlledEnemy TestControlledPlayerEnemies;
     Player m_Player;
+    bool m_HasPowerUp;
 
     protected void Start()
     {
@@ -68,7 +69,8 @@ public class GameManager : MonoBehaviour
         var direction = 0;
         if (Actions.Left)  direction = 1;
         if (Actions.Right) direction = -1;
-        var angle = direction * config.Speed * Time.deltaTime;
+        var speed = m_HasPowerUp ? config.Speed + config.PowerSpeed : config.Speed;
+        var angle = direction * speed * Time.fixedDeltaTime;
         m_Player.transform.RotateAround(m_Player.planet.transform.position, Vector3.forward, angle);
     }
 }

@@ -8,4 +8,5 @@ public class Config : ScriptableObject
 
     // Player
     public int Speed = 100;
+    public int PowerSpeed = 20;
 }
