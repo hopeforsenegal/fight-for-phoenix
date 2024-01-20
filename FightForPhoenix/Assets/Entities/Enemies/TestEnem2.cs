@@ -10,9 +10,9 @@ public class TestEnem2 : MonoBehaviour
 
     float test = 0f;
 
-    //void Start {
-        //var startingSet = enemyBase.LookAtPlanet(transform, target);
-    //}
+    void Start() {
+        transform.rotation = enemyBase.LookAtPlanet(transform, target);
+    }
 
     void Update()
     {
