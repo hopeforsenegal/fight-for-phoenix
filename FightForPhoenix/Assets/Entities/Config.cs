@@ -22,6 +22,17 @@ public class Config : ScriptableObject
     public string[] planetWonDialouge;
     public string[] planetLosingTooFastDialouge;
     public string[] planetWinningTooFastDialouge;
+    /*
+    // option 1
+    public Sprite[] sprites;
+    public string[] strings;
+    // option 2
+    struct thing{
+        Sprite sprite;
+        string stringy;
+    }
+    thing[] things;
+    */
 
     // Planet
     public int MaxNumberOfPlanetHealth = 10;

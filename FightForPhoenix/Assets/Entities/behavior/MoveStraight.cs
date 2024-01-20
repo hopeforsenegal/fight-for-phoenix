@@ -9,6 +9,7 @@ public class MoveStraight : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.position += MoveSpeed * Direction * Time.deltaTime;
+        transform.position += Vector3.right * 2f * Time.deltaTime;
+        //transform.Translate(Vector3.forward * MoveSpeed * Time.deltaTime);
     }
 }

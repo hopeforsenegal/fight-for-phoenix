@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
         }
 
         PlayerShoot(); //test shoot
+        ShotTimer();
 
         GameState current = m_GameState;
         m_TimeRemaining -= Time.deltaTime;
@@ -151,12 +152,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    float maxTime = 3f;
+    float maxTime = 2f;
     float curTime = 0f;
     bool canShoot = true;
     public void PlayerShoot() {
         if(Actions.Shoot && canShoot){
-            Object shot = Instantiate(plasmaShot);
+            GameObject shot = Instantiate(plasmaShot, 
+                m_Player.BulletSpawn.position, m_Player.transform.rotation);
             canShoot = false;
         }
     }
