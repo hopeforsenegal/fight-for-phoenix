@@ -9,14 +9,26 @@ public class TestEnem2 : MonoBehaviour
     Vector3 direction;
 
     float test = 0f;
+    Vector3 velocity;
 
     void Start() {
         transform.rotation = enemyBase.LookAtPlanet(transform, target);
+        direction = enemyBase.GetDirectionVector3(transform, target);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         test += Time.deltaTime;
+        //velocity = new Vector3(enemyBase.Speed * direction.x * Time.deltaTime, 
+            //enemyBase.WaveMove(direction, test).y, 0f);
+        transform.position += 
+            new Vector3(enemyBase.Speed * direction.x * Time.deltaTime,transform.position.y,0f);
+        transform.position = 
+            new Vector3(transform.position.x,enemyBase.WaveMove(direction, test).y,0f);
+        //velocity = transform.position;
+        //transform.position = enemyBase.WaveMove(direction, test);
+        //velocity += enemyBase.Speed * direction * Time.deltaTime;
+        //transform.position += velocity;
         //transform.position = enemyBase.WaveMove(transform.position, test);
         //sin
         //test += Time.deltaTime;

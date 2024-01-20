@@ -38,8 +38,8 @@ public class Config : ScriptableObject
     //Entity will try to slam into planet
     public bool PlanetSeeking;
 
-    public Vector3 WaveMove(Vector3 direction, Vector2 curPos, float counter, bool sine) {
-        return curPos = Mathf.Sin(counter) * WaveSize * direction;
+    public Vector3 WaveMove(Vector3 direction, float counter, bool sine=true) {
+        return new Vector3(0f, Mathf.Sin(counter),0f) * WaveSize;
     }
 
 
