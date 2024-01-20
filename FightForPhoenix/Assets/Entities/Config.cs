@@ -25,6 +25,8 @@ public class Config : ScriptableObject
     public float TrailLength = 0.5f;
     public float DropRate = 0.2f;
 
+    public GameObject PowerUpDropPrefab;
+
     public int ExtraSpeedSpeed = 20;
     public int ExtraSpeedTime = 10;
     public Color ExtraSpeedColor = Color.yellow;

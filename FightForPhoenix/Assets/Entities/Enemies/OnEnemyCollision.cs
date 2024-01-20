@@ -18,13 +18,9 @@ public class OnEnemyCollision : MonoBehaviour
         Destroy(gameObject);
         Debug.Log($"enemy named '{name}' blew up!");
 
-        //if (Random.value <= dropRate) {
-        { 
-            Debug.Log("We should drop a power up");
-
-            var powerup = PowerUpDrop.CreatePowerup("Test");
-            powerup.transform.position = other.transform.position;
-            //GameObject.cr
+        if (Random.value <= dropRate) {
+            // we will figure this out later because callbacks are annoying
+            // GameManager.DropPowerup(other.transform.position);
         }
     }
 }

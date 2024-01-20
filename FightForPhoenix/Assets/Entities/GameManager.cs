@@ -13,7 +13,8 @@ public static class Actions
     public static bool TestLose => Input.GetKey(KeyCode.Alpha1);
     public static bool TestWin  => Input.GetKey(KeyCode.Alpha2);
 
-    public static bool TestSuperSpeed => Input.GetKey(KeyCode.Alpha3);
+    public static bool TestSuperSpeed  => Input.GetKey(KeyCode.Alpha3);
+    public static bool TestPowerupDrop => Input.GetKeyDown(KeyCode.Alpha4);
 }
 
 public class GameManager : MonoBehaviour
@@ -75,6 +76,9 @@ public class GameManager : MonoBehaviour
             m_Player.TrailRenderer.enabled = true;
             m_Player.TrailRenderer.startColor = config.ExtraSpeedColor;
         }
+        if (Actions.TestPowerupDrop) {
+            DropPowerup(new Vector3(0, 10, 0));
+        }
 
         GameState current = m_GameState;
         m_TimeRemaining -= Time.deltaTime;
@@ -129,5 +133,11 @@ public class GameManager : MonoBehaviour
         m_Player.transform.RotateAround(phoenix.transform.position, Vector3.forward, angle);
 
         // Other
+    }
+
+    public void DropPowerup(Vector3 position) {
+        Debug.Log("We should drop a power up");
+
+        var go = Instantiate(config.PowerUpDropPrefab, position, Quaternion.identity);
     }
 }
