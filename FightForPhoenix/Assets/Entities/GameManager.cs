@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices;
 using UnityEngine;
 
 // We could populate these from the Config if we really wanted to
@@ -24,24 +23,29 @@ public class GameManager : MonoBehaviour
     public Config config;
 
     GameState m_GameState;
-    TestPlayerControlledEnemy m_Bullet;
+    TestPlayerControlledEnemy TestControlledPlayerEnemies;
+    Player m_Player;
 
-    void Start()
+    protected void Start()
     {
         NumberOfHits = 0;
         m_GameState = GameState.Playing;
-        m_Bullet = FindObjectOfType<TestPlayerControlledEnemy>();
+        TestControlledPlayerEnemies = FindObjectOfType<TestPlayerControlledEnemy>();
+        m_Player = FindObjectOfType<Player>();
     }
 
-    void Update()
+    protected void Update()
     {
-        if (Actions.Left) {
-            Vector3 v = -m_Bullet.transform.right * 1;  // -transform.right = left
-            m_Bullet.Rigidbody.velocity = v;
-        }
-        if (Actions.Right) {
-            Vector3 v = transform.right * 1;            // transform.right = right
-            m_Bullet.Rigidbody.velocity = v;
+        // Test Stuff
+        if (TestControlledPlayerEnemies) {
+            if (Actions.Left) {
+                Vector3 v = -TestControlledPlayerEnemies.transform.right * 1;  // -transform.right = left
+                TestControlledPlayerEnemies.Rigidbody.velocity = v;
+            }
+            if (Actions.Right) {
+                Vector3 v = transform.right * 1;            // transform.right = right
+                TestControlledPlayerEnemies.Rigidbody.velocity = v;
+            }
         }
 
         if (NumberOfHits > config.MaxNumberOfPlanetHealth) {
@@ -57,9 +61,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    protected void FixedUpdate()
     {
         // We should move player phsyics in here
         // once we have enemy ships
+        var direction = 0;
+        if (Actions.Left)  direction = 1;
+        if (Actions.Right) direction = -1;
+        var angle = direction * config.Speed * Time.deltaTime;
+        m_Player.transform.RotateAround(m_Player.planet.transform.position, Vector3.forward, angle);
     }
 }
