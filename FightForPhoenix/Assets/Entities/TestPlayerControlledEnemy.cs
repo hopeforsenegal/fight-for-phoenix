@@ -26,7 +26,6 @@ public class TestPlayerControlledEnemy : MonoBehaviour
             foreach (ContactPoint2D hit in collision.contacts) {
                 hitPosition.x = hit.point.x - 0.01f * hit.normal.x;
                 hitPosition.y = hit.point.y - 0.01f * hit.normal.y;
-                tilemap.SetTile(tilemap.WorldToCell(hitPosition), null);
                 m_GameManager.OnPlanetCollision(tilemap, tilemap.WorldToCell(hitPosition));
             }
         }

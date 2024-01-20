@@ -232,7 +232,7 @@ public class GameManager : MonoBehaviour
 
     internal void OnPlanetCollision(Tilemap tilemap, Vector3Int hitPosition)
     {
-        //tilemap.SetTile(tilemap.WorldToCell(hitPosition), null);
+        tilemap.SetTile(hitPosition, null);
         NumberOfHits++;
         Debug.Log($"Got hit!!");
 
