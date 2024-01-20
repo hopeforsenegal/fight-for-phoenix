@@ -15,4 +15,11 @@ MonoBehaviour:
   TimeUntilNextPhase: 60
   MaxNumberOfPlanetHealth: 10
   Speed: 55
-  PowerSpeed: 20
+  TrailLength: 0.5
+  ExtraSpeedSpeed: 20
+  ExtraSpeedTime: 10
+  ExtraSpeedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  Target: {fileID: 0}
+  WaveSize: 0
+  PlanetSeeking: 0
+  MoveDirection: {x: 0, y: 0, z: 0}
