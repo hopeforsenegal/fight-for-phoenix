@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7266622329084535320}
   - component: {fileID: -3563352077459618611}
   - component: {fileID: 9143294850117076135}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DodgerSmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
