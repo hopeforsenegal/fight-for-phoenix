@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
@@ -105,7 +104,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < stars.Length; i++) {
             SpriteRenderer star = stars[i];
-            LeanTween.color(star.gameObject, new Color(1,1,1,0.4f), 1.5f * (i+1.1f)).setLoopPingPong();
+            LeanTween.color(star.gameObject, new Color(1, 1, 1, 0.4f), 1.5f * (i + 1.1f)).setLoopPingPong();
         }
     }
 
@@ -199,7 +198,7 @@ public class GameManager : MonoBehaviour
                     m_Tile = PhoenixTilesToRemove[m_TileWinIndex];
                 }
                 if (m_PhoenixIndex < config.phoenix.Length) {
-                    if(m_PhoenixIndex == 2) {
+                    if (m_PhoenixIndex == 2) {
                         phoenix.sortingOrder = 0;   // bring phoenix to foreground
                     }
                     phoenix.sprite = config.phoenix[m_PhoenixIndex];
@@ -228,11 +227,9 @@ public class GameManager : MonoBehaviour
             for (int i = 0; i < 5; i++) {
                 points.Add(Camera.main.transform.position + new Vector3(Random.Range(-config.shakeAmount.x, config.shakeAmount.x), Random.Range(-config.shakeAmount.y, config.shakeAmount.y)));
             }
-            LeanTween.moveSpline(Camera.main.gameObject, points.ToArray(), .2f)
-                .setLoopPingPong().setOnComplete(() => {
-
-                });
-            LeanTween.scale(phoenix.gameObject, Vector3.one * 3, 4).setOnComplete(()=> {
+            LeanTween.moveSpline(Camera.main.gameObject, points.ToArray(), .2f).setLoopPingPong();
+            LeanTween.scale(phoenix.gameObject, Vector3.one * 3, 4).setOnComplete(() =>
+            {
                 LeanTween.scale(phoenix.gameObject, Vector3.one * 10, 2);
             });
 
@@ -267,28 +264,28 @@ public class GameManager : MonoBehaviour
                 m_ExplosionPlanetIndex = 0;
                 m_ExplosionPlanetTimer = 0;
                 LeanTween.scale(explosion2.gameObject, Vector3.one * 10, 1.5f);
-                LeanTween.scale(explosion .gameObject, Vector3.one * 10, 1.5f).setOnComplete(() =>
-                {
+                LeanTween.scale(explosion.gameObject, Vector3.one * 10, 1.5f).setOnComplete(() =>
+               {
                    m_ShowPlanetExplosion = false;
                    explosion.sprite = null;
                    explosion2.sprite = null;
 
-                    black.enabled = true;
-                    black.color = Color.clear;
-                    LeanTween.color(black.rectTransform, Color.white, 4f).setOnComplete(() =>
-                    {
-                        loseScreen.enabled = true;
-                        loseScreen.color = Color.clear;
-                        LeanTween.color(loseScreen.rectTransform, Color.white, 0.5f).setOnComplete(() =>
-                        {
-                            LeanTween.delayedCall(gameObject, 5f, () =>
-                            {
-                                // :GameOver
-                                SceneManager.LoadScene("MainMenu");
-                            });
-                        });
-                    });
-                });
+                   black.enabled = true;
+                   black.color = Color.clear;
+                   LeanTween.color(black.rectTransform, Color.white, 4f).setOnComplete(() =>
+                   {
+                       loseScreen.enabled = true;
+                       loseScreen.color = Color.clear;
+                       LeanTween.color(loseScreen.rectTransform, Color.white, 0.5f).setOnComplete(() =>
+                       {
+                           LeanTween.delayedCall(gameObject, 5f, () =>
+                           {
+                               // :GameOver
+                               SceneManager.LoadScene("MainMenu");
+                           });
+                       });
+                   });
+               });
             });
         }
     }
