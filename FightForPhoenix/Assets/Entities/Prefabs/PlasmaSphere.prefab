@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3934160005469831166}
   - component: {fileID: 1765108358210614019}
   - component: {fileID: 6198210632639251804}
+  - component: {fileID: 1628407102581672629}
   m_Layer: 8
   m_Name: PlasmaSphere
   m_TagString: Untagged
@@ -135,3 +136,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 10
+--- !u!114 &1628407102581672629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3583896376079884698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 504f81b3209a3477cb92037aeb624e47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

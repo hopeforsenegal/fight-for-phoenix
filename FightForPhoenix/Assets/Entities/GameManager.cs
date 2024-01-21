@@ -22,6 +22,7 @@ public static class Actions
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] GameObject[] Enemies; 
     public static int NumberOfHits { get; set; }
 
     public static Vector3Int[] PhoenixTilesToRemove = new Vector3Int[] { Vector3Int.zero, new Vector3Int(0, -1, 0), new Vector3Int(-1, 0, 0), new Vector3Int(-1, -1, 0), };
@@ -351,6 +352,25 @@ public class GameManager : MonoBehaviour
 
 
     // Collisions
+
+    internal void OnBulletCollision(Bullet bullet, Collider2D other)
+    {
+        // Bullet vs Enemy
+        if (other.GetComponent<Enemy>()) {
+            Debug.Log($"Bullet '{bullet.name}' hit enemy '{other.name}'!");
+            Destroy(other.gameObject);
+            Destroy(bullet.gameObject);
+
+            SFXSource.clip = config.Explosion;
+            SFXSource.Play();
+
+            if (Random.value <= config.DropRate) {
+                DropPowerup(other.transform.position);
+            }
+        }
+    }
+
+    /// is this even needed?
     internal void OnEnemyCollision(OnEnemyCollision onEnemyCollision, Collision2D other)
     {
         Debug.Log($"Enemy named '{onEnemyCollision.name}' blew up!");
