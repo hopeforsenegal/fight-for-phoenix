@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6672465343001918940}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.94, y: 2.22, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58bcf69252a671e41a5ce91e9f58dce9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveSize: 2
+  waveSize: 0.02
   useSine: 1
 --- !u!50 &-3563352077459618611
 Rigidbody2D:
@@ -136,7 +136,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 6672465343001918940}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -159,3 +159,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba2f8e5e0bd2caf41a2343cf720697dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilemapGameObject: {fileID: 0}

@@ -560,7 +560,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aefdf33904d1841b99f0b57a69e4ac38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemies: []
+  Enemies:
+  - {fileID: 9113285594808378138, guid: 20b062b235d7af246b4224682ade63bd, type: 3}
+  - {fileID: 3931394654228556700, guid: c8ce2cf9f49f7b2409b15972a98a232b, type: 3}
+  - {fileID: 6672465343001918940, guid: 9df56a8253b10f8468770ec917f441e7, type: 3}
+  - {fileID: 0}
+  - {fileID: 1189894961957445979, guid: 05053a62118b35f49a8956371adf99c5, type: 3}
+  - {fileID: 715582818954418019, guid: e6fad4f9c1d22114c9d2e4316b359869, type: 3}
   plasmaShot: {fileID: 3583896376079884698, guid: 802716960c19f1c47a5ebbb87ac1f71d, type: 3}
   config: {fileID: 11400000, guid: 4fbc88fe70af640ffa0b4f5110b749f5, type: 2}
   tilemapGameObject: {fileID: 1629256829}
