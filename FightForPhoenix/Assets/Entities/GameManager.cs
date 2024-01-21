@@ -117,12 +117,14 @@ public class GameManager : MonoBehaviour
         if (m_GameState == GameState.None) return;
 
         // Test Stuff
+#if UNITY_EDITOR
         if (Actions.TestSuperSpeed) {
             PlayerObtainedSuperSpeed();
         }
         if (Actions.TestPowerupDrop) {
             DropPowerup(new Vector3(0, 2.5f, 0));
         }
+#endif
 
         // :Timers
         m_PhaseTimeRemaining -= Time.deltaTime;
