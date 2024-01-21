@@ -124,11 +124,7 @@ public class GameManager : MonoBehaviour
             DropPowerup(new Vector3(0, 2.5f, 0));
         }
 
-        curSpawnTimerVal = SpawnEnemyTimer(curSpawnTimerVal);
-        PlayerShoot(); //test shoot
-        ShotTimer();
-
-        // Timers
+        // :Timers
         m_PhaseTimeRemaining -= Time.deltaTime;
         m_PowerUpTimeRemaining -= Time.deltaTime;
         m_TimeUntilDialogueDisappear -= Time.deltaTime;
@@ -143,6 +139,15 @@ public class GameManager : MonoBehaviour
             }
         }
         if (m_GameState == GameState.Playing) {
+            curSpawnTimerVal = SpawnEnemyTimer(curSpawnTimerVal);
+
+            // :Player :Shoot
+            if (canShoot && Actions.Shoot) {
+                canShoot = false;
+                Instantiate(plasmaShot, m_Player.BulletSpawn.position, m_Player.transform.rotation);
+            }
+            ShotTimer();
+
             if (m_TimerText) {
                 m_TimerText.text = string.Format("{0:0.00}", m_PhaseTimeRemaining);
             }
@@ -286,6 +291,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    protected void FixedUpdate()
+    {
+        if (m_GameState != GameState.Playing) return;
+
+        // Player Movement
+        var direction = 0;
+        if (Actions.Left) direction = 1;
+        if (Actions.Right) direction = -1;
+        var speed = m_PowerUpType == PowerUpType.ExtraSpeed ? config.Speed + config.ExtraSpeedSpeed : config.Speed;
+        var angle = direction * speed * Time.fixedDeltaTime;
+        m_Player.transform.RotateAround(phoenix.transform.position, Vector3.forward, angle);
+
+        // Other
+        asteroid.transform.position += new Vector3(0.005f, 0.005f);
+    }
+
     private static Sprite UpdateSpriteAnimation(Sprite[] sprites, float duration, ref int index, ref float timer)
     {
         var sprite = sprites[index];
@@ -296,13 +317,6 @@ public class GameManager : MonoBehaviour
         return sprite;
     }
 
-    public void PlayerShoot()
-    {
-        if (canShoot && Actions.Shoot) {
-            canShoot = false;
-            Instantiate(plasmaShot, m_Player.BulletSpawn.position, m_Player.transform.rotation);
-        }
-    }
     public void ShotTimer()
     {
         if (!canShoot) {
@@ -323,20 +337,6 @@ public class GameManager : MonoBehaviour
 
         SFXSource.clip = config.Powerup;
         SFXSource.Play();
-    }
-
-    protected void FixedUpdate()
-    {
-        // Player Movement
-        var direction = 0;
-        if (Actions.Left)  direction = 1;
-        if (Actions.Right) direction = -1;
-        var speed = m_PowerUpType == PowerUpType.ExtraSpeed ? config.Speed + config.ExtraSpeedSpeed : config.Speed;
-        var angle = direction * speed * Time.fixedDeltaTime;
-        m_Player.transform.RotateAround(phoenix.transform.position, Vector3.forward, angle);
-
-        // Other
-        asteroid.transform.position += new Vector3(0.005f, 0.005f);
     }
 
     public void DropPowerup(Vector3 position)
