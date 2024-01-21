@@ -37,7 +37,10 @@ public class Config : ScriptableObject
     public Sprite[] phoenix;
     public Vector2 shakeAmount;
 
-    [Header("Dialouge")]
+    [Header("Dialouge/Intro")]
+    public Sprite[] intro_sprites;
+    public string[] intro_strings;
+    [Header("Dialouge/Ingame")]
     public int TimeUntilDialogueDisappear = 3;
     public string[] planetVeryStartDialouge;
     public string[] planetHitDialouge;
@@ -45,17 +48,6 @@ public class Config : ScriptableObject
     public string[] planetWonDialouge;
     public string[] planetLosingTooFastDialouge;
     public string[] planetWinningTooFastDialouge;   // @TODO: We don't know when ships blow up yet
-    /*
-    // option 1
-    public Sprite[] sprites;
-    public string[] strings;
-    // option 2
-    struct thing{
-        Sprite sprite;
-        string stringy;
-    }
-    thing[] things;
-    */
 
     [Header("Planet")]
     public int MaxNumberOfPlanetHealth = 10;

@@ -94,6 +94,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b15c1dc87652841c0877b1c5ac7f3197, type: 3}
   - {fileID: 21300000, guid: b15c1dc87652841c0877b1c5ac7f3197, type: 3}
   shakeAmount: {x: 0.3, y: 0.3}
+  intro_sprites:
+  - {fileID: 21300000, guid: 03d2ab4818c6e44d0b888018ede9b3af, type: 3}
+  - {fileID: 21300000, guid: 68e5a78013e33f247822a837e55b0ab4, type: 3}
+  intro_strings:
+  - In the year 3000, the United Earth Space Force (UESF) encountered a large, unknown
+    alien lifeform within an uninhabited planet.
+  - 'You will be piloting the Geist-13, one of our best space fighters, around Planet
+    [REDACTED]. Your mission: Defend Planet [REDACTED] at all costs.'
   TimeUntilDialogueDisappear: 3
   planetVeryStartDialouge:
   - Defend the planet!
