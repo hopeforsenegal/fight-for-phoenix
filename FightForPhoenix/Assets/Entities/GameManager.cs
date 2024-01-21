@@ -14,14 +14,16 @@ public static class Actions
     public static bool TestLose => Input.GetKey(KeyCode.Alpha1);
     public static bool TestWin  => Input.GetKey(KeyCode.Alpha2);
 
-    public static bool TestSuperSpeed  => Input.GetKey(KeyCode.Alpha3);
-    public static bool TestPowerupDrop => Input.GetKeyDown(KeyCode.Alpha4);
+    public static bool TestSuperSpeed   => Input.GetKey(KeyCode.Alpha3);
+    public static bool TestPowerupDrop  => Input.GetKeyDown(KeyCode.Alpha4);
 }
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject plasmaShot;
     public static int NumberOfHits { get; set; }
+
+    public static Vector3Int[] Erase = new Vector3Int[] { Vector3Int.zero, new Vector3Int(0,-1,0), new Vector3Int(-1, 0, 0), new Vector3Int(-1, -1, 0), };
 
     enum GameState
     {
@@ -59,6 +61,9 @@ public class GameManager : MonoBehaviour
     float m_ExplosionPlanetTimer = 0;
     private int m_ExplosionPlanetIndex2;
     private float m_ExplosionPlanetTimer2;
+    private float m_TileWinTimer;
+    private Vector3Int m_Tile;
+    private int m_TileWinIndex;
 
     protected void Start()
     {
@@ -90,16 +95,19 @@ public class GameManager : MonoBehaviour
             PlayerObtainedSuperSpeed();
         }
         if (Actions.TestPowerupDrop) {
-            DropPowerup(new Vector3(0, 10, 0));
+            DropPowerup(new Vector3(0, 5, 0));
         }
 
         PlayerShoot(); //test shoot
         ShotTimer();
 
-        GameState current = m_GameState;
+        // Timers
         m_TimeRemaining -= Time.deltaTime;
         m_PowerUpTimeRemaining -= Time.deltaTime;
         timeUntilDialogueDisappear -= Time.deltaTime;
+        m_TileWinTimer -= Time.deltaTime;
+
+        GameState current = m_GameState;
 
         // Dialogue
         if (ingameDialogueText) {
@@ -133,10 +141,10 @@ public class GameManager : MonoBehaviour
             explosion2.sprite = UpdateSpriteAnimation(config.planetExplosions2, 0.5f, ref m_ExplosionPlanetIndex2, ref m_ExplosionPlanetTimer2);
         }
 
-        if (NumberOfHits > config.MaxNumberOfPlanetHealth) {
+        if (NumberOfHits > config.MaxNumberOfPlanetHealth || Actions.TestLose) {
             m_GameState = GameState.Lost;
         }
-        if (m_TimeRemaining <= 0) {
+        if (m_TimeRemaining <= 0 || Actions.TestWin) {
             m_GameState = GameState.Won;
         }
         if (m_PowerUpTimeRemaining <= 0) {
@@ -145,17 +153,35 @@ public class GameManager : MonoBehaviour
             m_Player.TrailRenderer.startColor = Color.clear;
         }
 
+        // Planet to Phoenix Animiation
+        if (m_GameState == GameState.Won) {
+            if(m_TileWinTimer < 0) {
+                m_TileWinTimer = config.TileWinTimer;
+
+                var tilemap = tilemapGameObject.GetComponentInChildren<Tilemap>();
+                tilemap.SetTile(m_Tile, null);
+                m_TileWinIndex += 1;
+                if (m_TileWinIndex < Erase.Length ) {
+                    m_Tile = Erase[m_TileWinIndex];
+                }
+            }
+        }
+
 
         var hasChangedState = current != m_GameState;
-        if (hasChangedState && m_GameState == GameState.Won || Actions.TestWin) {
+        if (hasChangedState && m_GameState == GameState.Won) {
             Debug.Log($"{m_GameState}");
 
             timeUntilDialogueDisappear = config.TimeUntilDialogueDisappear;
 
             var index = Random.Range(0, config.planetWonDialouge.Length - 1);
             ingameDialogueText.text = config.planetWonDialouge[index];
+
+            m_TileWinTimer = config.TileWinTimer;
+            m_Tile = Vector3Int.zero;
+            m_TileWinIndex = 0;
         }
-        if (hasChangedState && m_GameState == GameState.Lost || Actions.TestLose) {
+        if (hasChangedState && m_GameState == GameState.Lost) {
             Debug.Log($"{m_GameState}");
             timeUntilDialogueDisappear = config.TimeUntilDialogueDisappear;
 

@@ -55,6 +55,7 @@ public class Config : ScriptableObject
 
     // Planet
     public int MaxNumberOfPlanetHealth = 10;
+    public float TileWinTimer = 0.5f;
 
     // Player
     public int Speed = 100;
