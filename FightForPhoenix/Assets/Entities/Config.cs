@@ -34,6 +34,7 @@ public class Config : ScriptableObject
     public Sprite[] planetExplosions;
     public Sprite[] planetExplosions2;
     public Sprite[] phoenix;
+    public Vector2 shakeAmount;
 
     [Header("Dialouge")]
     public int TimeUntilDialogueDisappear = 3;

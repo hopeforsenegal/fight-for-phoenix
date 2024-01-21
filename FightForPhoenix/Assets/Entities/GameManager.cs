@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
@@ -197,6 +199,9 @@ public class GameManager : MonoBehaviour
                     m_Tile = PhoenixTilesToRemove[m_TileWinIndex];
                 }
                 if (m_PhoenixIndex < config.phoenix.Length) {
+                    if(m_PhoenixIndex == 2) {
+                        phoenix.sortingOrder = 0;   // bring phoenix to foreground
+                    }
                     phoenix.sprite = config.phoenix[m_PhoenixIndex];
                 }
             }
@@ -217,6 +222,19 @@ public class GameManager : MonoBehaviour
             m_TileWinIndex = 0;
             m_PhoenixIndex = 0;
             phoenix.sprite = config.phoenix[m_PhoenixIndex];
+
+
+            var points = new List<Vector3>();
+            for (int i = 0; i < 5; i++) {
+                points.Add(Camera.main.transform.position + new Vector3(Random.Range(-config.shakeAmount.x, config.shakeAmount.x), Random.Range(-config.shakeAmount.y, config.shakeAmount.y)));
+            }
+            LeanTween.moveSpline(Camera.main.gameObject, points.ToArray(), .2f)
+                .setLoopPingPong().setOnComplete(() => {
+
+                });
+            LeanTween.scale(phoenix.gameObject, Vector3.one * 3, 4).setOnComplete(()=> {
+                LeanTween.scale(phoenix.gameObject, Vector3.one * 10, 2);
+            });
 
             white.enabled = true;
             white.color = Color.clear;
