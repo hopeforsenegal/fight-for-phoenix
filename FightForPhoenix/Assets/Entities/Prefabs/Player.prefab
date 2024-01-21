@@ -394,6 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletSpawn: {fileID: 8726589837022396256}
   laser: {fileID: 1899905082}
+  shotgun: {fileID: 1855908814114825909}
 --- !u!96 &1648271348742533719
 TrailRenderer:
   serializedVersion: 2

@@ -29,6 +29,10 @@ public class Config : ScriptableObject
     [Header("Game/SFX")]
     public AudioClip Explosion;
 
+
+    [Header("Explosions")]
+    public Sprite[] planetExplosions;
+
     [Header("Dialouge")]
     public int TimeUntilDialogueDisappear = 3;
     public string[] planetHitDialouge;

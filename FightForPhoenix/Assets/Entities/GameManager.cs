@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
@@ -32,7 +33,7 @@ public class GameManager : MonoBehaviour
 
     public Config config;
     public GameObject tilemapGameObject;
-    public GameObject explosion;
+    public SpriteRenderer explosion;
     public Transform phoenix;
     public Text m_TimerText;
     public Text ingameDialogueText;
@@ -53,6 +54,9 @@ public class GameManager : MonoBehaviour
     const float fireRate = 0.2f;
     float currentFireTimer = 0f;
     bool canShoot = true;
+    private bool m_ShowPlanetExplosion;
+    private int m_ExplosionPlanetIndex = 0;
+    private float m_ExplosionPlanetTimer = 0;
 
     protected void Start()
     {
@@ -127,7 +131,10 @@ public class GameManager : MonoBehaviour
             // Just so we can continually mess with the trail length for now
             m_Player.TrailRenderer.time = config.TrailLength;
         }
-    
+
+        if (m_ShowPlanetExplosion) {
+            explosion.sprite = UpdateSpriteAnimation(config.planetExplosions, 0.5f, ref m_ExplosionPlanetIndex, ref m_ExplosionPlanetTimer);
+        }
 
         if (NumberOfHits > config.MaxNumberOfPlanetHealth) {
             m_GameState = GameState.Lost;
@@ -164,13 +171,27 @@ public class GameManager : MonoBehaviour
 
                 musicSource.clip = config.Lose;
                 musicSource.Play();
-
-                LeanTween.scale(explosion, Vector3.one * 5, 0.75f).setOnComplete(() =>
+                m_ShowPlanetExplosion = true;
+                m_ExplosionPlanetIndex = 0;
+                m_ExplosionPlanetTimer = 0;
+                LeanTween.scale(explosion.gameObject, Vector3.one * 5, 1.5f).setOnComplete(() =>
                 {
+                    m_ShowPlanetExplosion = false;
+                    explosion.sprite = null;
                     Debug.Log("Now maybe show the Game over screen... after a fade to and from black?");
                 });
             });
         }
+    }
+
+    private static Sprite UpdateSpriteAnimation(Sprite[] sprites, float duration, ref int index, ref float timer)
+    {
+        var sprite = sprites[index];
+        if ((timer += Time.deltaTime) >= (duration / sprites.Length)) {
+            timer = 0;
+            index = (index + 1) % sprites.Length;
+        }
+        return sprite;
     }
 
     public void PlayerShoot() {
@@ -239,4 +260,8 @@ public class GameManager : MonoBehaviour
         SFXSource.clip = config.Explosion;
         SFXSource.Play();
     }
+
+
+
+
 }
