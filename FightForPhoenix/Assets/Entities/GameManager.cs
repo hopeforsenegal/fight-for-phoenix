@@ -67,12 +67,6 @@ public class GameManager : MonoBehaviour
         m_Player.TrailRenderer.enabled = false;
         m_TimeRemaining = config.TimeUntilNextPhase;
 
-        // Set the drop rate of power ups. We might move this to be in update so we can test better.
-        var enemyCollisions = FindObjectsOfType<OnEnemyCollision>();
-        foreach (var e in enemyCollisions) {
-            e.dropRate = config.DropRate;
-        }
-
         musicSource.clip = config.Gameplay;
         musicSource.Play();
     }
