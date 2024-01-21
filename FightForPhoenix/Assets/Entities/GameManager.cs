@@ -294,6 +294,25 @@ public class GameManager : MonoBehaviour
 
 
     // Collisions
+
+    internal void OnBulletCollision(Bullet bullet, Collider2D other)
+    {
+        // Bullet vs Enemy
+        if (other.GetComponent<Enemy>()) {
+            Debug.Log($"Bullet '{bullet.name}' hit enemy '{other.name}'!");
+            Destroy(other.gameObject);
+            Destroy(bullet.gameObject);
+
+            SFXSource.clip = config.Explosion;
+            SFXSource.Play();
+
+            if (Random.value <= config.DropRate) {
+                DropPowerup(other.transform.position);
+            }
+        }
+    }
+
+    /// is this even needed?
     internal void OnEnemyCollision(OnEnemyCollision onEnemyCollision, Collision2D other)
     {
         Debug.Log($"Enemy named '{onEnemyCollision.name}' blew up!");
