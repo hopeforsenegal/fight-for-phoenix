@@ -84,6 +84,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4ba3f92bdc5c046d4999bb61ecf2de6b, type: 3}
   - {fileID: 21300000, guid: 1e74ae18e69c34bf693296474cf353fe, type: 3}
   TimeUntilDialogueDisappear: 3
+  planetVeryStartDialouge:
+  - Defend the planet!
   planetHitDialouge:
   - Our objective is getting hit.
   - "Bogey\u2019s hitting the VIP."
@@ -115,7 +117,12 @@ MonoBehaviour:
   - Who taught you how to fly and shoot?!? Helen Keller?!?
   planetWinningTooFastDialouge: []
   MaxNumberOfPlanetHealth: 10
+  TileWinTimer: 0.5
   Speed: 55
+  FireRate: 0.2
+  ChargerSpeed: 10
+  DodgerSpeed: 5
+  DodgerSinCosWidth: 5
   TrailLength: 0.5
   DropRate: 0.2
   PowerUpDropPrefab: {fileID: 7319834146705539355, guid: 97c1427c759ce4563a43d013fcb12922, type: 3}

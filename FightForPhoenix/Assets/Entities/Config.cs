@@ -35,6 +35,7 @@ public class Config : ScriptableObject
 
     [Header("Dialouge")]
     public int TimeUntilDialogueDisappear = 3;
+    public string[] planetVeryStartDialouge;
     public string[] planetHitDialouge;
     public string[] planetLostDialouge;
     public string[] planetWonDialouge;

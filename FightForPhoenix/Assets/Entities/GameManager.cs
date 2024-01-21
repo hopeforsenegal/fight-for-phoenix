@@ -14,8 +14,8 @@ public static class Actions
     public static bool TestLose => Input.GetKey(KeyCode.Alpha1);
     public static bool TestWin  => Input.GetKey(KeyCode.Alpha2);
 
-    public static bool TestSuperSpeed   => Input.GetKey(KeyCode.Alpha3);
-    public static bool TestPowerupDrop  => Input.GetKeyDown(KeyCode.Alpha4);
+    public static bool TestSuperSpeed  => Input.GetKey(KeyCode.Alpha3);
+    public static bool TestPowerupDrop => Input.GetKeyDown(KeyCode.Alpha4);
 }
 
 public class GameManager : MonoBehaviour
@@ -75,6 +75,10 @@ public class GameManager : MonoBehaviour
 
         musicSource.clip = config.Gameplay;
         musicSource.Play();
+
+        var index = Random.Range(0, config.planetVeryStartDialouge.Length);
+        ingameDialogueText.text = config.planetVeryStartDialouge[index];
+        m_TimeUntilDialogueDisappear = config.TimeUntilDialogueDisappear;
     }
 
     protected void Update()
@@ -154,13 +158,13 @@ public class GameManager : MonoBehaviour
 
         // Planet to Phoenix Animiation
         if (m_GameState == GameState.Won) {
-            if(m_TileWinTimer < 0) {
+            if (m_TileWinTimer < 0) {
                 m_TileWinTimer = config.TileWinTimer;
 
                 var tilemap = tilemapGameObject.GetComponentInChildren<Tilemap>();
                 tilemap.SetTile(m_Tile, null);
                 m_TileWinIndex += 1;
-                if (m_TileWinIndex < PhoenixTilesToRemove.Length ) {
+                if (m_TileWinIndex < PhoenixTilesToRemove.Length) {
                     m_Tile = PhoenixTilesToRemove[m_TileWinIndex];
                 }
             }
@@ -197,13 +201,13 @@ public class GameManager : MonoBehaviour
                 m_ExplosionPlanetIndex = 0;
                 m_ExplosionPlanetTimer = 0;
                 LeanTween.scale(explosion2.gameObject, Vector3.one * 10, 1.5f);
-                LeanTween.scale(explosion.gameObject,  Vector3.one * 10, 1.5f).setOnComplete(() =>
-                {
-                    m_ShowPlanetExplosion = false;
-                    explosion.sprite = null;
-                    explosion2.sprite = null;
-                    Debug.Log("Now maybe show the Game over screen... after a fade to and from black?");
-                });
+                LeanTween.scale(explosion.gameObject, Vector3.one * 10, 1.5f).setOnComplete(() =>
+               {
+                   m_ShowPlanetExplosion = false;
+                   explosion.sprite = null;
+                   explosion2.sprite = null;
+                   Debug.Log("Now maybe show the Game over screen... after a fade to and from black?");
+               });
             });
         }
     }
@@ -218,17 +222,19 @@ public class GameManager : MonoBehaviour
         return sprite;
     }
 
-    public void PlayerShoot() {
-        if(Actions.Shoot && canShoot){
-            Instantiate(plasmaShot,  m_Player.BulletSpawn.position, m_Player.transform.rotation);
+    public void PlayerShoot()
+    {
+        if (Actions.Shoot && canShoot) {
+            Instantiate(plasmaShot, m_Player.BulletSpawn.position, m_Player.transform.rotation);
             canShoot = false;
         }
     }
-    public void ShotTimer() {
-        if(!canShoot) {
+    public void ShotTimer()
+    {
+        if (!canShoot) {
             currentFireTimer += Time.deltaTime;
         }
-        if(currentFireTimer >= config.FireRate) {
+        if (currentFireTimer >= config.FireRate) {
             currentFireTimer = 0f;
             canShoot = true;
         }
@@ -255,7 +261,8 @@ public class GameManager : MonoBehaviour
         // Other
     }
 
-    public void DropPowerup(Vector3 position) {
+    public void DropPowerup(Vector3 position)
+    {
         Debug.Log("We should drop a power up");
         Instantiate(config.PowerUpDropPrefab, position, Quaternion.identity);
     }
