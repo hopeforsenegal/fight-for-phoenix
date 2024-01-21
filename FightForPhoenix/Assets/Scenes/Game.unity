@@ -142,7 +142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &107096006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -705,7 +705,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aefdf33904d1841b99f0b57a69e4ac38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plasmaShot: {fileID: 0}
+  Enemies: []
+  plasmaShot: {fileID: 3583896376079884698, guid: 802716960c19f1c47a5ebbb87ac1f71d, type: 3}
   config: {fileID: 11400000, guid: 4fbc88fe70af640ffa0b4f5110b749f5, type: 2}
   tilemapGameObject: {fileID: 1629256829}
   explosion: {fileID: 1404439665}
@@ -842,6 +843,67 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1001 &870954382
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3014328306864792337, guid: 75afba9a4f6f13946b03e8ad8c815898, type: 3}
+      propertyPath: freqOfSpawn
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014328306864792338, guid: 75afba9a4f6f13946b03e8ad8c815898, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014328306864792338, guid: 75afba9a4f6f13946b03e8ad8c815898, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014328306864792338, guid: 75afba9a4f6f13946b03e8ad8c815898, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014328306864792338, guid: 75afba9a4f6f13946b03e8ad8c815898, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014328306864792338, guid: 75afba9a4f6f13946b03e8ad8c815898, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014328306864792338, guid: 75afba9a4f6f13946b03e8ad8c815898, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014328306864792338, guid: 75afba9a4f6f13946b03e8ad8c815898, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014328306864792338, guid: 75afba9a4f6f13946b03e8ad8c815898, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014328306864792338, guid: 75afba9a4f6f13946b03e8ad8c815898, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014328306864792338, guid: 75afba9a4f6f13946b03e8ad8c815898, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014328306864792338, guid: 75afba9a4f6f13946b03e8ad8c815898, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014328306864792339, guid: 75afba9a4f6f13946b03e8ad8c815898, type: 3}
+      propertyPath: m_Name
+      value: EnemySpawner
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 75afba9a4f6f13946b03e8ad8c815898, type: 3}
 --- !u!1 &939149507
 GameObject:
   m_ObjectHideFlags: 0
