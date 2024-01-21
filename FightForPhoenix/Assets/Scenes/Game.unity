@@ -561,12 +561,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies:
-  - {fileID: 9113285594808378138, guid: 20b062b235d7af246b4224682ade63bd, type: 3}
-  - {fileID: 3931394654228556700, guid: c8ce2cf9f49f7b2409b15972a98a232b, type: 3}
-  - {fileID: 6672465343001918940, guid: 9df56a8253b10f8468770ec917f441e7, type: 3}
-  - {fileID: 0}
-  - {fileID: 1189894961957445979, guid: 05053a62118b35f49a8956371adf99c5, type: 3}
-  - {fileID: 715582818954418019, guid: e6fad4f9c1d22114c9d2e4316b359869, type: 3}
+  - {fileID: 8453363566261981618, guid: 8532f1f245a7a47499219c3f0c558691, type: 3}
+  - {fileID: 8340217638532299092, guid: 461f5abdfd603364fa0d24f4718f0237, type: 3}
+  - {fileID: 996608466575069445, guid: 1abb3d4f346dfb64c9d9f03e5abcc524, type: 3}
+  - {fileID: 355070231529615382, guid: 6b697c21065ab5341bfeea032c9d0078, type: 3}
+  - {fileID: 804488690487214666, guid: cab553082b447da4f89518c642af5f24, type: 3}
+  - {fileID: 3095356333242567414, guid: 5c0e1798a45245541a24c0c50ba09ca1, type: 3}
   plasmaShot: {fileID: 3583896376079884698, guid: 802716960c19f1c47a5ebbb87ac1f71d, type: 3}
   config: {fileID: 11400000, guid: 4fbc88fe70af640ffa0b4f5110b749f5, type: 2}
   tilemapGameObject: {fileID: 1629256829}
