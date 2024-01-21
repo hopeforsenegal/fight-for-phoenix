@@ -7,8 +7,8 @@ using UnityEngine.UI;
 // We could populate these actions from the Config if we really wanted to
 public static class Actions
 {
-    public static bool Left  => Input.GetKey(KeyCode.A);
-    public static bool Right => Input.GetKey(KeyCode.D);
+    public static bool Left  => Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
+    public static bool Right => Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
 
     public static bool Shoot => Input.GetKey(KeyCode.Space);
 
@@ -53,7 +53,6 @@ public class GameManager : MonoBehaviour
     public AudioSource SFXSource;
 
     GameState m_GameState;
-    TestPlayerControlledEnemy TestControlledPlayerEnemies;
     Player m_Player;
     float m_PhaseTimeRemaining;
     PowerUpType m_PowerUpType;
@@ -78,7 +77,6 @@ public class GameManager : MonoBehaviour
     protected void Start()
     {
         NumberOfHits = 0;
-        TestControlledPlayerEnemies = FindObjectOfType<TestPlayerControlledEnemy>();
         m_Player = FindObjectOfType<Player>();
         m_Player.TrailRenderer.enabled = false;
         m_PhaseTimeRemaining = config.TimeUntilNextPhase;
@@ -114,16 +112,6 @@ public class GameManager : MonoBehaviour
         if (m_GameState == GameState.None) return;
 
         // Test Stuff
-        if (TestControlledPlayerEnemies) {
-            if (Actions.Left) {
-                Vector3 v = -TestControlledPlayerEnemies.transform.right * 1;  // -transform.right = left
-                TestControlledPlayerEnemies.Rigidbody.velocity = v;
-            }
-            if (Actions.Right) {
-                Vector3 v = transform.right * 1;            // transform.right = right
-                TestControlledPlayerEnemies.Rigidbody.velocity = v;
-            }
-        }
         if (Actions.TestSuperSpeed) {
             PlayerObtainedSuperSpeed();
         }
