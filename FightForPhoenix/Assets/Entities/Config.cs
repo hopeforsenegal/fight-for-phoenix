@@ -26,6 +26,7 @@ public class Config : ScriptableObject
     public AudioClip Level_Transition;  // @TODO: We don't have this yet
     public AudioClip Lose;
     public AudioClip Menu;
+    public AudioClip Victory;
     [Header("Audio/SFX")]
     public AudioClip Explosion;
     public AudioClip Powerup;

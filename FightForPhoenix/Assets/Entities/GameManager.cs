@@ -210,7 +210,9 @@ public class GameManager : MonoBehaviour
             m_TileWinIndex = 0;
             m_PhoenixIndex = 0;
             phoenix.sprite = config.phoenix[m_PhoenixIndex];
-
+			
+            musicSource.clip = config.Victory;
+            musicSource.Play();
 
             var points = new List<Vector3>();
             for (int i = 0; i < 5; i++) {
