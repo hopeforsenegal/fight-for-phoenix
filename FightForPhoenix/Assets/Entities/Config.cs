@@ -63,6 +63,7 @@ public class Config : ScriptableObject
     public int ChargerSpeed = 10;
     public int DodgerSpeed = 5;
     public float DodgerSinCosWidth = 5f;
+    public float EnemyDeathDelay = 0.1f;
     [Header("Enemies/Spawn")]
     public float baseRange = 10;
     public float rangeMod = 10;

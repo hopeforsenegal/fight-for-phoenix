@@ -26,5 +26,6 @@ public class Enemy : MonoBehaviour
                 _gm.OnPlanetCollision(tilemap, tilemap.WorldToCell(hitPosition));
             }
         }
+        Destroy(gameObject, _gm.config.EnemyDeathDelay);
     }
 }
