@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PowerUpDrop : MonoBehaviour
 {
-    private GameManager m_GameManager;
+    GameManager m_GameManager;
 
     void Awake()
     {

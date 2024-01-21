@@ -193,21 +193,19 @@ public class GameManager : MonoBehaviour
 
             LeanTween.scale(tilemapGameObject, Vector3.zero, 2).setOnComplete(() =>
             {
-                Debug.Log("Planet death animation complete");
-
                 musicSource.clip = config.Lose;
                 musicSource.Play();
                 m_ShowPlanetExplosion = true;
                 m_ExplosionPlanetIndex = 0;
                 m_ExplosionPlanetTimer = 0;
                 LeanTween.scale(explosion2.gameObject, Vector3.one * 10, 1.5f);
-                LeanTween.scale(explosion.gameObject, Vector3.one * 10, 1.5f).setOnComplete(() =>
-               {
+                LeanTween.scale(explosion .gameObject, Vector3.one * 10, 1.5f).setOnComplete(() =>
+                {
                    m_ShowPlanetExplosion = false;
                    explosion.sprite = null;
                    explosion2.sprite = null;
                    Debug.Log("Now maybe show the Game over screen... after a fade to and from black?");
-               });
+                });
             });
         }
     }
@@ -224,9 +222,9 @@ public class GameManager : MonoBehaviour
 
     public void PlayerShoot()
     {
-        if (Actions.Shoot && canShoot) {
-            Instantiate(plasmaShot, m_Player.BulletSpawn.position, m_Player.transform.rotation);
+        if (canShoot && Actions.Shoot) {
             canShoot = false;
+            Instantiate(plasmaShot, m_Player.BulletSpawn.position, m_Player.transform.rotation);
         }
     }
     public void ShotTimer()
@@ -263,7 +261,7 @@ public class GameManager : MonoBehaviour
 
     public void DropPowerup(Vector3 position)
     {
-        Debug.Log("We should drop a power up");
+        Debug.Log("We should drop a power up...");
         Instantiate(config.PowerUpDropPrefab, position, Quaternion.identity);
     }
 
@@ -271,8 +269,8 @@ public class GameManager : MonoBehaviour
     // Collisions
     internal void OnEnemyCollision(OnEnemyCollision onEnemyCollision, Collision2D other)
     {
-        Destroy(onEnemyCollision.gameObject);
         Debug.Log($"Enemy named '{onEnemyCollision.name}' blew up!");
+        Destroy(onEnemyCollision.gameObject);
 
         SFXSource.clip = config.Explosion;
         SFXSource.Play();
@@ -284,9 +282,9 @@ public class GameManager : MonoBehaviour
 
     internal void OnPlanetCollision(Tilemap tilemap, Vector3Int hitPosition)
     {
+        Debug.Log($"Planet hit!!");
         tilemap.SetTile(hitPosition, null);
         NumberOfHits++;
-        Debug.Log($"Planet hit!!");
 
         SFXSource.clip = config.Explosion;
         SFXSource.Play();

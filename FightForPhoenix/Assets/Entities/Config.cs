@@ -66,8 +66,7 @@ public class Config : ScriptableObject
     public int DodgerSpeed = 5;
     public float DodgerSinCosWidth = 5f;
 
-    // Power up
-    [Header("Powerup")]
+    [Header("Power up")]
     public float TrailLength = 0.5f;
     public float DropRate = 0.2f;
 
@@ -77,7 +76,6 @@ public class Config : ScriptableObject
     public int ExtraSpeedSpeed = 20;
     public int ExtraSpeedTime = 10;
     public Color ExtraSpeedColor = Color.yellow;
-
 
     [Header("Enemy")]
     //Enemy baseline
@@ -110,6 +108,5 @@ public class Config : ScriptableObject
         Vector2 facingDirection = GetDirectionVector2(callingEntity, entityTarget);
         float angle = Mathf.Atan2(facingDirection.y, facingDirection.x) * Mathf.Rad2Deg;
         return Quaternion.Euler(Vector3.forward * (angle + offset));
-
     }
 }

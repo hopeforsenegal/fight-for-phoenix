@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class OnEnemyCollision : MonoBehaviour
 {
-    private GameManager m_GameManager;
+    GameManager m_GameManager;
 
     protected void Awake()
     {

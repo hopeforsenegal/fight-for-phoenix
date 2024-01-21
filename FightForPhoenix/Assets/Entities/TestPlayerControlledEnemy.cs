@@ -5,15 +5,15 @@ public class TestPlayerControlledEnemy : MonoBehaviour
 {
     public GameObject tilemapGameObject;
     public Rigidbody2D Rigidbody { get; private set; }
-    Tilemap tilemap;
 
-    private GameManager m_GameManager;
+    Tilemap tilemap;
+    GameManager m_GameManager;
 
     void Start()
     {
         tilemap = tilemapGameObject.GetComponent<Tilemap>();
         Rigidbody = GetComponent<Rigidbody2D>();
-        Debug.Assert(tilemap != null, "You forget to add a Tiilemap to the scene");
+        Debug.Assert(tilemap != null,   "You forget to add a Tiilemap to the scene");
         Debug.Assert(Rigidbody != null, "You forget to add a rigidbody to this game object");
 
         m_GameManager = FindObjectOfType<GameManager>();
