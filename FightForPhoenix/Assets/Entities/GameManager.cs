@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
         if (m_GameState == GameState.Playing) {
             curSpawnTimerVal = SpawnEnemyTimer(curSpawnTimerVal);
 
-            // :Player :Shoot
+            // :Player :Spawn :Shoot 
             if (canShoot && Actions.Shoot) {
                 canShoot = false;
                 Instantiate(plasmaShot, m_Player.BulletSpawn.position, m_Player.transform.rotation);
@@ -347,6 +347,7 @@ public class GameManager : MonoBehaviour
         Instantiate(config.PowerUpDropPrefab, position, Quaternion.identity);
     }
 
+    // :Spawn :Timer
     float SpawnEnemyTimer(float counter)
     {
         if (counter > config.spawnDelay) {
@@ -369,6 +370,7 @@ public class GameManager : MonoBehaviour
         return new Vector3(randomX, randomY, 0f);
     }
 
+    // :Spawn
     public void SpawnEnemy()
     {
         GameObject randomEnemy = config.enemies[Random.Range(0, config.enemies.Length - 1)];
