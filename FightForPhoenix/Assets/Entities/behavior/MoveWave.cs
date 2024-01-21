@@ -13,6 +13,7 @@ public class MoveWave : MonoBehaviour
     void Start() {
         _gm = FindObjectOfType<GameManager>();
         counterMax = Mathf.PI * 2; //ensure complete revolution up and down
+        //GetComponent<Rigidbody2D>().useFullKinematicContacts = true;
     }
 
     void FixedUpdate() {
