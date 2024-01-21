@@ -151,7 +151,7 @@ GameObject:
   m_Component:
   - component: {fileID: 206039101}
   - component: {fileID: 206039102}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Phoenix
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   m_Component:
   - component: {fileID: 796078632}
   - component: {fileID: 796078631}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -475,7 +475,7 @@ GameObject:
   - component: {fileID: 1127130907}
   - component: {fileID: 1127130906}
   - component: {fileID: 1127130905}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Planet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -960,6 +960,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 45
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 306767993, guid: 5ff39ff6c60aeac4abcf3594f8ad2c1a, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ff39ff6c60aeac4abcf3594f8ad2c1a, type: 3}
