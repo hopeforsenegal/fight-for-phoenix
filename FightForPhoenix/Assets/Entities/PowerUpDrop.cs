@@ -7,6 +7,7 @@ public class PowerUpDrop : MonoBehaviour
     void Awake()
     {
         m_GameManager = FindObjectOfType<GameManager>();
+        transform.rotation = m_GameManager.config.LookAtTarget(m_GameManager.phoenix.transform, gameObject.transform);
     }
     void OnTriggerEnter2D(Collider2D other)
     {
