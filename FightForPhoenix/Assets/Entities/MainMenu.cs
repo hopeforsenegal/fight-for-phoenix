@@ -1,13 +1,13 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+//using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
     public Config config;
-    public Button play;
-    public Button quit;
+    //public Button play;
+    //public Button quit;
     public string nextScene;
 
     protected void Start()
@@ -15,18 +15,34 @@ public class MainMenu : MonoBehaviour
         var a = FindObjectOfType<AudioSource>();
         a.clip = config.Menu;
         a.Play();
-
-        play.onClick.AddListener(() =>
-        {
-            SceneManager.LoadScene(nextScene);
-        });
-        quit.onClick.AddListener(() =>
-        {
-#if UNITY_EDITOR
-            EditorApplication.isPlaying = false;
-#else
-            Application.Quit();
-#endif
-        });
     }
+
+    protected void Update()
+    {
+        if (Input.anyKeyDown)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                QuitGame();
+            }
+            else
+            {
+                SceneManager.LoadScene(nextScene);
+            }
+        }
+    }
+
+    private void QuitGame()
+    {
+#if UNITY_EDITOR
+    EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+
+    }
+
 }
+
+
+
