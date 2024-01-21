@@ -137,11 +137,11 @@ MonoBehaviour:
   planetWinningTooFastDialouge: []
   MaxNumberOfPlanetHealth: 10
   TileWinTimer: 0.5
-  Speed: 55
+  Speed: 65
   FireRate: 0.2
   BulletLifetime: 2
-  ChargerSpeed: 10
-  DodgerSpeed: 5
+  ChargerSpeed: 9
+  DodgerSpeed: 4
   DodgerSinCosWidth: 5
   baseRange: 10
   rangeMod: 10

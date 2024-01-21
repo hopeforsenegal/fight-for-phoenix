@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public Config config;
-    //public Button play;
-    //public Button quit;
     public string nextScene;
 
     protected void Start()
