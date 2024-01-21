@@ -94,6 +94,7 @@ public class GameManager : MonoBehaviour
         m_GameState = GameState.None;
         LeanTween.color(black.rectTransform, Color.clear, 1.5f).setOnComplete(() =>
         {
+            black.enabled = false;
             m_GameState = GameState.Playing;
         });
 
@@ -207,6 +208,12 @@ public class GameManager : MonoBehaviour
             m_TileWinTimer = config.TileWinTimer;
             m_Tile = Vector3Int.zero;
             m_TileWinIndex = 0;
+
+            white.enabled = true;
+            white.color = Color.clear;
+            LeanTween.color(white.rectTransform, Color.white, 4f).setOnComplete(() =>
+            {
+            });
         }
         if (hasChangedState && m_GameState == GameState.Lost) {
             Debug.Log($"{m_GameState}");
