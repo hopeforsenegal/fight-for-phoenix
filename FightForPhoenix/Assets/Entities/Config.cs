@@ -64,6 +64,7 @@ public class Config : ScriptableObject
     [Header("Player")]
     public int Speed = 100;
     public float FireRate = 0.2f;
+    public float BulletLifetime = 2;
 
     [Header("Enemies")]
     public int ChargerSpeed = 10;
