@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     public GameObject tilemapGameObject;
     public SpriteRenderer explosion;
     public SpriteRenderer explosion2;
+    public SpriteRenderer[] stars;
     public Transform phoenix;
     public Image loseScreen;
     public Image winScreen;
@@ -95,6 +96,11 @@ public class GameManager : MonoBehaviour
         {
             m_GameState = GameState.Playing;
         });
+
+        for (int i = 0; i < stars.Length; i++) {
+            SpriteRenderer star = stars[i];
+            LeanTween.color(star.gameObject, Color.clear, 5f * (i+1.1f)).setLoopPingPong();
+        }
     }
 
     protected void Update()
