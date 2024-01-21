@@ -18,6 +18,7 @@ MonoBehaviour:
   Level_Transition: {fileID: 8300000, guid: 67865a1bb6a03491c8e794ff11faa241, type: 3}
   Lose: {fileID: 8300000, guid: f42f6c16748704d38b5ec5733903d1e8, type: 3}
   Menu: {fileID: 8300000, guid: 7e823b92b26e940d5a435a28584a2a07, type: 3}
+  Victory: {fileID: 8300000, guid: 4b6e0375deba347ba9135e029c7ff582, type: 3}
   Explosion: {fileID: 8300000, guid: f8421bbdf5e7242399efb01e8bb41b17, type: 3}
   Powerup: {fileID: 8300000, guid: 0801ee1294e4f40d18a8ec825437cbc9, type: 3}
   planetExplosions:
@@ -84,6 +85,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 85c895396a7f5468fba5b2c81bfce41f, type: 3}
   - {fileID: 21300000, guid: 4ba3f92bdc5c046d4999bb61ecf2de6b, type: 3}
   - {fileID: 21300000, guid: 1e74ae18e69c34bf693296474cf353fe, type: 3}
+  phoenix:
+  - {fileID: 21300000, guid: e820bdc55ebd0468590904e04a822189, type: 3}
+  - {fileID: 21300000, guid: e820bdc55ebd0468590904e04a822189, type: 3}
+  - {fileID: 21300000, guid: e820bdc55ebd0468590904e04a822189, type: 3}
+  - {fileID: 21300000, guid: 3de045d8dfc55424098c874b02dc35e0, type: 3}
+  - {fileID: 21300000, guid: 3de045d8dfc55424098c874b02dc35e0, type: 3}
+  - {fileID: 21300000, guid: b15c1dc87652841c0877b1c5ac7f3197, type: 3}
+  - {fileID: 21300000, guid: b15c1dc87652841c0877b1c5ac7f3197, type: 3}
+  shakeAmount: {x: 0.3, y: 0.3}
   TimeUntilDialogueDisappear: 3
   planetVeryStartDialouge:
   - Defend the planet!
@@ -121,9 +131,20 @@ MonoBehaviour:
   TileWinTimer: 0.5
   Speed: 55
   FireRate: 0.2
+  BulletLifetime: 2
   ChargerSpeed: 10
   DodgerSpeed: 5
   DodgerSinCosWidth: 5
+  baseRange: 10
+  rangeMod: 10
+  spawnDelay: 2
+  enemies:
+  - {fileID: 3095356333242567414, guid: 5c0e1798a45245541a24c0c50ba09ca1, type: 3}
+  - {fileID: 804488690487214666, guid: cab553082b447da4f89518c642af5f24, type: 3}
+  - {fileID: 355070231529615382, guid: 6b697c21065ab5341bfeea032c9d0078, type: 3}
+  - {fileID: 7106278264620028392, guid: 6a2b439262898784d9e895ca2a224355, type: 3}
+  - {fileID: 1189894961957445979, guid: 05053a62118b35f49a8956371adf99c5, type: 3}
+  - {fileID: 5031450268953695996, guid: cd97ac0099478c746b54281fe7d4e8af, type: 3}
   TrailLength: 0.5
   DropRate: 0.2
   PowerUpDropPrefab: {fileID: 7319834146705539355, guid: 97c1427c759ce4563a43d013fcb12922, type: 3}

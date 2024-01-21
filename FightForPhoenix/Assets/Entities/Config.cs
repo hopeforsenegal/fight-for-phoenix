@@ -26,6 +26,7 @@ public class Config : ScriptableObject
     public AudioClip Level_Transition;  // @TODO: We don't have this yet
     public AudioClip Lose;
     public AudioClip Menu;
+    public AudioClip Victory;
     [Header("Audio/SFX")]
     public AudioClip Explosion;
     public AudioClip Powerup;
@@ -33,6 +34,8 @@ public class Config : ScriptableObject
     [Header("Animations")]
     public Sprite[] planetExplosions;
     public Sprite[] planetExplosions2;
+    public Sprite[] phoenix;
+    public Vector2 shakeAmount;
 
     [Header("Dialouge")]
     public int TimeUntilDialogueDisappear = 3;
@@ -61,11 +64,17 @@ public class Config : ScriptableObject
     [Header("Player")]
     public int Speed = 100;
     public float FireRate = 0.2f;
+    public float BulletLifetime = 2;
 
     [Header("Enemies")]
     public int ChargerSpeed = 10;
     public int DodgerSpeed = 5;
     public float DodgerSinCosWidth = 5f;
+    [Header("Enemies/Spawn")]
+    public float baseRange = 10;
+    public float rangeMod = 10;
+    public float spawnDelay = 2;
+    public GameObject[] enemies;
 
     [Header("Power up")]
     public float TrailLength = 0.5f;
