@@ -155,7 +155,7 @@ MonoBehaviour:
   config: {fileID: 11400000, guid: 4fbc88fe70af640ffa0b4f5110b749f5, type: 2}
   play: {fileID: 269497273}
   quit: {fileID: 1917921463}
-  nextScene: Game
+  nextScene: IntroScenes
 --- !u!4 &134711477
 Transform:
   m_ObjectHideFlags: 0
