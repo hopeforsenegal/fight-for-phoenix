@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public Config config;
     public GameObject tilemapGameObject;
     public SpriteRenderer explosion;
+    public SpriteRenderer explosion2;
     public Transform phoenix;
     public Text m_TimerText;
     public Text ingameDialogueText;
@@ -57,6 +58,8 @@ public class GameManager : MonoBehaviour
     bool m_ShowPlanetExplosion;
     int m_ExplosionPlanetIndex = 0;
     float m_ExplosionPlanetTimer = 0;
+    private int m_ExplosionPlanetIndex2;
+    private float m_ExplosionPlanetTimer2;
 
     protected void Start()
     {
@@ -128,6 +131,7 @@ public class GameManager : MonoBehaviour
 
         if (m_ShowPlanetExplosion) {
             explosion.sprite = UpdateSpriteAnimation(config.planetExplosions, 0.5f, ref m_ExplosionPlanetIndex, ref m_ExplosionPlanetTimer);
+            explosion2.sprite = UpdateSpriteAnimation(config.planetExplosions2, 0.5f, ref m_ExplosionPlanetIndex2, ref m_ExplosionPlanetTimer2);
         }
 
         if (NumberOfHits > config.MaxNumberOfPlanetHealth) {
@@ -168,10 +172,12 @@ public class GameManager : MonoBehaviour
                 m_ShowPlanetExplosion = true;
                 m_ExplosionPlanetIndex = 0;
                 m_ExplosionPlanetTimer = 0;
-                LeanTween.scale(explosion.gameObject, Vector3.one * 5, 1.5f).setOnComplete(() =>
+                LeanTween.scale(explosion2.gameObject, Vector3.one * 10, 1.5f);
+                LeanTween.scale(explosion.gameObject, Vector3.one * 10, 1.5f).setOnComplete(() =>
                 {
                     m_ShowPlanetExplosion = false;
                     explosion.sprite = null;
+                    explosion2.sprite = null;
                     Debug.Log("Now maybe show the Game over screen... after a fade to and from black?");
                 });
             });

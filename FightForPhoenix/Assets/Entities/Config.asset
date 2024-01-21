@@ -20,6 +20,61 @@ MonoBehaviour:
   Menu: {fileID: 8300000, guid: 7e823b92b26e940d5a435a28584a2a07, type: 3}
   Explosion: {fileID: 8300000, guid: 23fca5fa586c4403d81b3210234e9424, type: 3}
   planetExplosions:
+  - {fileID: 21300000, guid: 20805c632c52da54a83372817b14baa1, type: 3}
+  - {fileID: 21300000, guid: 7051e7ded0ee70b49866eb532707c7ed, type: 3}
+  - {fileID: 21300000, guid: 7209c342d8acff74b8e9cc6ea8411f23, type: 3}
+  - {fileID: 21300000, guid: 3ab699a46befa9a47a47959d734cebf4, type: 3}
+  - {fileID: 21300000, guid: c03ec652cf3087b40997b7d136322217, type: 3}
+  - {fileID: 21300000, guid: 0c391ab6912ac2943858919b3deeb53a, type: 3}
+  - {fileID: 21300000, guid: c349ce3f609348646a4ad96324ff67aa, type: 3}
+  - {fileID: 21300000, guid: 2eeee1601785d8041a6277323eef2319, type: 3}
+  - {fileID: 21300000, guid: 70588db14a5d41844be2750994549622, type: 3}
+  - {fileID: 21300000, guid: 849e607dc434e894d815a83a0037e592, type: 3}
+  - {fileID: 21300000, guid: f9ab15d1bf3bc07448ec389613620aec, type: 3}
+  - {fileID: 21300000, guid: 346bc657790b37b419043385f9d45c22, type: 3}
+  - {fileID: 21300000, guid: 92c055be3dd434541a076c29fbf50d4d, type: 3}
+  - {fileID: 21300000, guid: bfcf240603a87ea459383d340550fa4c, type: 3}
+  - {fileID: 21300000, guid: e70d00166681f68469ea32cdf4bb680b, type: 3}
+  - {fileID: 21300000, guid: b06f27d67fbf6124587fdf7fcc3f2bdd, type: 3}
+  - {fileID: 21300000, guid: 92c39bd8df7731842931087dce39d846, type: 3}
+  - {fileID: 21300000, guid: c31fbdfb1f9c5e044bab5ae02c2ff2b6, type: 3}
+  - {fileID: 21300000, guid: a59001b6742bfd24f9f5d8e5c3870bfd, type: 3}
+  - {fileID: 21300000, guid: 76ee96a4b063cc64487794e13627b9af, type: 3}
+  - {fileID: 21300000, guid: ddd5f02d7bef88b4cb77097cdbe5ccaa, type: 3}
+  - {fileID: 21300000, guid: 77dd3326f2ec5e2408e16020168e6579, type: 3}
+  - {fileID: 21300000, guid: aa3890b4850476e40920c0355eb79ca8, type: 3}
+  - {fileID: 21300000, guid: c5ef6afcca71bb14baff4a87eed5b5d2, type: 3}
+  - {fileID: 21300000, guid: b30391b7b28703945aa03bf487b41053, type: 3}
+  - {fileID: 21300000, guid: f8b9054cc8e30c44da8e80219facc948, type: 3}
+  - {fileID: 21300000, guid: b963ceb81c094a3468d464c1996cab04, type: 3}
+  - {fileID: 21300000, guid: d40580510eb8a354d8d7d293a1391603, type: 3}
+  - {fileID: 21300000, guid: ba5818e7269053240937595b34e3faa2, type: 3}
+  - {fileID: 21300000, guid: 237cc462ac505ec41939859bef762891, type: 3}
+  - {fileID: 21300000, guid: e9c16d9cb770aa943a6fca1997e3da27, type: 3}
+  - {fileID: 21300000, guid: c289ab9f148c0a548a0340d1062880af, type: 3}
+  - {fileID: 21300000, guid: d72ec63f398d7b64387584712b3a94d7, type: 3}
+  - {fileID: 21300000, guid: f09c4e794acdd6d4fa8494cc8f60ecb8, type: 3}
+  - {fileID: 21300000, guid: 67cb977b2bf747949bcf27a9f3d62c1b, type: 3}
+  - {fileID: 21300000, guid: d8b4f5659085b6c4cafa08bf0de18e59, type: 3}
+  - {fileID: 21300000, guid: 7e10ab78af9c8dc4887afe8aca22f8c1, type: 3}
+  - {fileID: 21300000, guid: 0c41800d9dc9ca64b98da7f8cbd1aeea, type: 3}
+  - {fileID: 21300000, guid: a1d2acba0f9744e41887dc84ec2fd05f, type: 3}
+  - {fileID: 21300000, guid: 1e11fccfc68ea0d4ca4aeb5ccf706b6d, type: 3}
+  - {fileID: 21300000, guid: bdfef0f23d747da428992e3c07e38d6c, type: 3}
+  - {fileID: 21300000, guid: cc46fb8132d50194c941f50a2bd509c4, type: 3}
+  - {fileID: 21300000, guid: ccfa440291420f245be65dd8a35f7b39, type: 3}
+  - {fileID: 21300000, guid: b9fb9428ff9d62c41a1b93ad6f5ce98f, type: 3}
+  - {fileID: 21300000, guid: f4e036f5e22161a46a456ba399afe89c, type: 3}
+  - {fileID: 21300000, guid: d4cdfbe5a0d4b9a43a816ba7f08f35de, type: 3}
+  - {fileID: 21300000, guid: 603e934c08c630d4b9225ee95ab4305f, type: 3}
+  - {fileID: 21300000, guid: cce7b93c70e3e56408c2dcd89ee55431, type: 3}
+  - {fileID: 21300000, guid: 9f96d96dadb56a947ac3f3db544b86c6, type: 3}
+  - {fileID: 21300000, guid: 76c3be5dbde56084eb9063c30bf2d053, type: 3}
+  - {fileID: 21300000, guid: ba2fae45b314e564cbcca04f59f4d763, type: 3}
+  - {fileID: 21300000, guid: d57566725d241644caef18c9529e08ac, type: 3}
+  - {fileID: 21300000, guid: 7df03ab914128a44184a464a1c62ac34, type: 3}
+  - {fileID: 21300000, guid: 8ae27fa9aaefd254ca2c2825ee2e1c8c, type: 3}
+  planetExplosions2:
   - {fileID: 21300000, guid: 200a68af40e6b48b08a9e523ae553cce, type: 3}
   - {fileID: 21300000, guid: 450ea98f7722e4959800c0b025a68774, type: 3}
   - {fileID: 21300000, guid: 931a3c531dfcb4c96b1e0698d60a47d9, type: 3}

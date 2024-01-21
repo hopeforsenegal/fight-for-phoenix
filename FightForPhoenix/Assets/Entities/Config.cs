@@ -32,6 +32,7 @@ public class Config : ScriptableObject
 
     [Header("Explosions")]
     public Sprite[] planetExplosions;
+    public Sprite[] planetExplosions2;
 
     [Header("Dialouge")]
     public int TimeUntilDialogueDisappear = 3;
