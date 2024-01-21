@@ -83,7 +83,7 @@ public class Config : ScriptableObject
     //Entity will try to slam into planet
     public bool PlanetSeeking;
 
-    public Vector3 WaveMove(float counter, bool sine = true)
+    public float WaveMove(float counter, bool sine = true)
     {
         return sine ? Mathf.Sin(counter) : Mathf.Cos(counter);
     }
