@@ -20,10 +20,9 @@ public static class Actions
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject plasmaShot;
     public static int NumberOfHits { get; set; }
 
-    public static Vector3Int[] Erase = new Vector3Int[] { Vector3Int.zero, new Vector3Int(0,-1,0), new Vector3Int(-1, 0, 0), new Vector3Int(-1, -1, 0), };
+    public static Vector3Int[] PhoenixTilesToRemove = new Vector3Int[] { Vector3Int.zero, new Vector3Int(0, -1, 0), new Vector3Int(-1, 0, 0), new Vector3Int(-1, -1, 0), };
 
     enum GameState
     {
@@ -32,6 +31,7 @@ public class GameManager : MonoBehaviour
         Won
     }
 
+    [SerializeField] GameObject plasmaShot;
     public Config config;
     public GameObject tilemapGameObject;
     public SpriteRenderer explosion;
@@ -39,31 +39,30 @@ public class GameManager : MonoBehaviour
     public Transform phoenix;
     public Text m_TimerText;
     public Text ingameDialogueText;
-
     public AudioSource musicSource;
     public AudioSource SFXSource;
-
 
     GameState m_GameState;
     TestPlayerControlledEnemy TestControlledPlayerEnemies;
     Player m_Player;
-    float m_TimeRemaining;
+    float m_PhaseTimeRemaining;
     PowerUpType m_PowerUpType;
     float m_PowerUpTimeRemaining;
     int m_PreviousNumberOfHits;
-    float timeUntilDialogueDisappear;
-
-    const float fireRate = 0.2f;
+    float m_TimeUntilDialogueDisappear;
+    // Shoot
     float currentFireTimer = 0f;
     bool canShoot = true;
+    // Lose explosion
     bool m_ShowPlanetExplosion;
     int m_ExplosionPlanetIndex = 0;
     float m_ExplosionPlanetTimer = 0;
-    private int m_ExplosionPlanetIndex2;
-    private float m_ExplosionPlanetTimer2;
-    private float m_TileWinTimer;
-    private Vector3Int m_Tile;
-    private int m_TileWinIndex;
+    int m_ExplosionPlanetIndex2;
+    float m_ExplosionPlanetTimer2;
+    // Tile win
+    float m_TileWinTimer;
+    Vector3Int m_Tile;
+    int m_TileWinIndex;
 
     protected void Start()
     {
@@ -72,7 +71,7 @@ public class GameManager : MonoBehaviour
         TestControlledPlayerEnemies = FindObjectOfType<TestPlayerControlledEnemy>();
         m_Player = FindObjectOfType<Player>();
         m_Player.TrailRenderer.enabled = false;
-        m_TimeRemaining = config.TimeUntilNextPhase;
+        m_PhaseTimeRemaining = config.TimeUntilNextPhase;
 
         musicSource.clip = config.Gameplay;
         musicSource.Play();
@@ -102,34 +101,34 @@ public class GameManager : MonoBehaviour
         ShotTimer();
 
         // Timers
-        m_TimeRemaining -= Time.deltaTime;
+        m_PhaseTimeRemaining -= Time.deltaTime;
         m_PowerUpTimeRemaining -= Time.deltaTime;
-        timeUntilDialogueDisappear -= Time.deltaTime;
+        m_TimeUntilDialogueDisappear -= Time.deltaTime;
         m_TileWinTimer -= Time.deltaTime;
 
         GameState current = m_GameState;
 
         // Dialogue
         if (ingameDialogueText) {
-            if (timeUntilDialogueDisappear <= 0) {
+            if (m_TimeUntilDialogueDisappear <= 0) {
                 ingameDialogueText.text = string.Empty;
             }
         }
         if (m_GameState == GameState.Playing) {
             if (m_TimerText) {
-                m_TimerText.text = string.Format("{0:0.00}", m_TimeRemaining);
+                m_TimerText.text = string.Format("{0:0.00}", m_PhaseTimeRemaining);
             }
             if (m_PreviousNumberOfHits != NumberOfHits) {
                 m_PreviousNumberOfHits = NumberOfHits;
 
-                if (timeUntilDialogueDisappear > 0.01) {
+                if (m_TimeUntilDialogueDisappear > 0.01) {
                     var index = Random.Range(0, config.planetLosingTooFastDialouge.Length);
                     ingameDialogueText.text = config.planetLosingTooFastDialouge[index];
                 } else {
                     var index = Random.Range(0, config.planetHitDialouge.Length);
                     ingameDialogueText.text = config.planetHitDialouge[index];
                 }
-                timeUntilDialogueDisappear = config.TimeUntilDialogueDisappear;
+                m_TimeUntilDialogueDisappear = config.TimeUntilDialogueDisappear;
             }
 
             // Just so we can continually mess with the trail length for now
@@ -144,7 +143,7 @@ public class GameManager : MonoBehaviour
         if (NumberOfHits > config.MaxNumberOfPlanetHealth || Actions.TestLose) {
             m_GameState = GameState.Lost;
         }
-        if (m_TimeRemaining <= 0 || Actions.TestWin) {
+        if (m_PhaseTimeRemaining <= 0 || Actions.TestWin) {
             m_GameState = GameState.Won;
         }
         if (m_PowerUpTimeRemaining <= 0) {
@@ -161,8 +160,8 @@ public class GameManager : MonoBehaviour
                 var tilemap = tilemapGameObject.GetComponentInChildren<Tilemap>();
                 tilemap.SetTile(m_Tile, null);
                 m_TileWinIndex += 1;
-                if (m_TileWinIndex < Erase.Length ) {
-                    m_Tile = Erase[m_TileWinIndex];
+                if (m_TileWinIndex < PhoenixTilesToRemove.Length ) {
+                    m_Tile = PhoenixTilesToRemove[m_TileWinIndex];
                 }
             }
         }
@@ -172,7 +171,7 @@ public class GameManager : MonoBehaviour
         if (hasChangedState && m_GameState == GameState.Won) {
             Debug.Log($"{m_GameState}");
 
-            timeUntilDialogueDisappear = config.TimeUntilDialogueDisappear;
+            m_TimeUntilDialogueDisappear = config.TimeUntilDialogueDisappear;
 
             var index = Random.Range(0, config.planetWonDialouge.Length - 1);
             ingameDialogueText.text = config.planetWonDialouge[index];
@@ -183,7 +182,7 @@ public class GameManager : MonoBehaviour
         }
         if (hasChangedState && m_GameState == GameState.Lost) {
             Debug.Log($"{m_GameState}");
-            timeUntilDialogueDisappear = config.TimeUntilDialogueDisappear;
+            m_TimeUntilDialogueDisappear = config.TimeUntilDialogueDisappear;
 
             var index = Random.Range(0, config.planetLostDialouge.Length - 1);
             ingameDialogueText.text = config.planetLostDialouge[index];
@@ -229,7 +228,7 @@ public class GameManager : MonoBehaviour
         if(!canShoot) {
             currentFireTimer += Time.deltaTime;
         }
-        if(currentFireTimer >= fireRate) {
+        if(currentFireTimer >= config.FireRate) {
             currentFireTimer = 0f;
             canShoot = true;
         }

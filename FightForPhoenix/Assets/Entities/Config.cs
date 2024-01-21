@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public enum PowerUpType
@@ -9,6 +8,7 @@ public enum PowerUpType
     Shotgun,
     Laser,
 }
+
 enum EnemyType
 {
     DodgesLeftRight,
@@ -20,17 +20,16 @@ public class Config : ScriptableObject
 {
     [Header("Game")]
     public int TimeUntilNextPhase = 60;
-    [Header("Game/Music")]
+    [Header("Audio/Music")]
     public AudioClip Intro; // @TODO: Get this into Kiki's scene eventually
     public AudioClip Gameplay;
     public AudioClip Level_Transition;  // @TODO: We don't have this yet
     public AudioClip Lose;
     public AudioClip Menu;
-    [Header("Game/SFX")]
+    [Header("Audio/SFX")]
     public AudioClip Explosion;
 
-
-    [Header("Explosions")]
+    [Header("Animations")]
     public Sprite[] planetExplosions;
     public Sprite[] planetExplosions2;
 
@@ -53,12 +52,14 @@ public class Config : ScriptableObject
     thing[] things;
     */
 
-    // Planet
+    [Header("Planet")]
     public int MaxNumberOfPlanetHealth = 10;
     public float TileWinTimer = 0.5f;
 
-    // Player
+    [Header("Player")]
     public int Speed = 100;
+    public float FireRate = 0.2f;
+
     [Header("Enemies")]
     public int ChargerSpeed = 10;
     public int DodgerSpeed = 5;
