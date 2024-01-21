@@ -122,7 +122,7 @@ public class GameManager : MonoBehaviour
             PlayerObtainedSuperSpeed();
         }
         if (Actions.TestPowerupDrop) {
-            DropPowerup(new Vector3(0, 5, 0));
+            DropPowerup(new Vector3(0, 2.5f, 0));
         }
 
         PlayerShoot(); //test shoot
