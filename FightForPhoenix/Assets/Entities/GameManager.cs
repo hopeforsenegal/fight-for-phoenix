@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     public SpriteRenderer explosion2;
     public SpriteRenderer[] stars;
     public SpriteRenderer asteroid;
-    public Transform phoenix;
+    public SpriteRenderer phoenix;
     public Image loseScreen;
     public Image winScreen;
     public Image white;
@@ -67,10 +67,11 @@ public class GameManager : MonoBehaviour
     float m_ExplosionPlanetTimer = 0;
     int m_ExplosionPlanetIndex2;
     float m_ExplosionPlanetTimer2;
-    // Tile win
+    // Win
     float m_TileWinTimer;
     Vector3Int m_Tile;
     int m_TileWinIndex;
+    int m_PhoenixIndex;
 
     protected void Start()
     {
@@ -191,8 +192,12 @@ public class GameManager : MonoBehaviour
                 var tilemap = tilemapGameObject.GetComponentInChildren<Tilemap>();
                 tilemap.SetTile(m_Tile, null);
                 m_TileWinIndex += 1;
+                m_PhoenixIndex += 1;
                 if (m_TileWinIndex < PhoenixTilesToRemove.Length) {
                     m_Tile = PhoenixTilesToRemove[m_TileWinIndex];
+                }
+                if (m_PhoenixIndex < config.phoenix.Length) {
+                    phoenix.sprite = config.phoenix[m_PhoenixIndex];
                 }
             }
         }
@@ -210,10 +215,12 @@ public class GameManager : MonoBehaviour
             m_TileWinTimer = config.TileWinTimer;
             m_Tile = Vector3Int.zero;
             m_TileWinIndex = 0;
+            m_PhoenixIndex = 0;
+            phoenix.sprite = config.phoenix[m_PhoenixIndex];
 
             white.enabled = true;
             white.color = Color.clear;
-            LeanTween.color(white.rectTransform, Color.white, 4f).setOnComplete(() =>
+            LeanTween.color(white.rectTransform, Color.white, 6f).setOnComplete(() =>
             {
                 winScreen.enabled = true;
                 winScreen.color = Color.clear;

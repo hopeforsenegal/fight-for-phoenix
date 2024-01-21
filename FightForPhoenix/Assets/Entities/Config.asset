@@ -84,6 +84,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 85c895396a7f5468fba5b2c81bfce41f, type: 3}
   - {fileID: 21300000, guid: 4ba3f92bdc5c046d4999bb61ecf2de6b, type: 3}
   - {fileID: 21300000, guid: 1e74ae18e69c34bf693296474cf353fe, type: 3}
+  phoenix:
+  - {fileID: 21300000, guid: e820bdc55ebd0468590904e04a822189, type: 3}
+  - {fileID: 21300000, guid: e820bdc55ebd0468590904e04a822189, type: 3}
+  - {fileID: 21300000, guid: e820bdc55ebd0468590904e04a822189, type: 3}
+  - {fileID: 21300000, guid: 3de045d8dfc55424098c874b02dc35e0, type: 3}
+  - {fileID: 21300000, guid: 3de045d8dfc55424098c874b02dc35e0, type: 3}
+  - {fileID: 21300000, guid: b15c1dc87652841c0877b1c5ac7f3197, type: 3}
+  - {fileID: 21300000, guid: b15c1dc87652841c0877b1c5ac7f3197, type: 3}
   TimeUntilDialogueDisappear: 3
   planetVeryStartDialouge:
   - Defend the planet!

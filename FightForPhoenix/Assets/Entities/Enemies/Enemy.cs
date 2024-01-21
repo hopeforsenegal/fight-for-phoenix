@@ -8,6 +8,6 @@ public class Enemy : MonoBehaviour
 
     void Start() {
         GameManager gm = FindObjectOfType<GameManager>();
-        transform.rotation = gm.config.LookAtTarget(gm.phoenix, gameObject.transform);
+        transform.rotation = gm.config.LookAtTarget(gm.phoenix.transform, gameObject.transform);
     }
 }
