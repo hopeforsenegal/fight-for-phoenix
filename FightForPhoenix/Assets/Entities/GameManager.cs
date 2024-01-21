@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < stars.Length; i++) {
             SpriteRenderer star = stars[i];
-            LeanTween.color(star.gameObject, Color.clear, 5f * (i+1.1f)).setLoopPingPong();
+            LeanTween.color(star.gameObject, new Color(1,1,1,0.4f), 1.5f * (i+1.1f)).setLoopPingPong();
         }
     }
 
