@@ -54,9 +54,9 @@ public class GameManager : MonoBehaviour
     const float fireRate = 0.2f;
     float currentFireTimer = 0f;
     bool canShoot = true;
-    private bool m_ShowPlanetExplosion;
-    private int m_ExplosionPlanetIndex = 0;
-    private float m_ExplosionPlanetTimer = 0;
+    bool m_ShowPlanetExplosion;
+    int m_ExplosionPlanetIndex = 0;
+    float m_ExplosionPlanetTimer = 0;
 
     protected void Start()
     {
@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
             }
         }
         if (Actions.TestSuperSpeed) {
-            ObtainedSuperSpeed();
+            PlayerObtainedSuperSpeed();
         }
         if (Actions.TestPowerupDrop) {
             DropPowerup(new Vector3(0, 10, 0));
@@ -205,7 +205,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ObtainedSuperSpeed()
+    public void PlayerObtainedSuperSpeed()
     {
         m_PowerUpType = PowerUpType.ExtraSpeed;
         m_PowerUpTimeRemaining = config.ExtraSpeedTime;
@@ -234,7 +234,7 @@ public class GameManager : MonoBehaviour
     internal void OnEnemyCollision(OnEnemyCollision onEnemyCollision, Collision2D other)
     {
         Destroy(onEnemyCollision.gameObject);
-        Debug.Log($"enemy named '{onEnemyCollision.name}' blew up!");
+        Debug.Log($"Enemy named '{onEnemyCollision.name}' blew up!");
 
         SFXSource.clip = config.Explosion;
         SFXSource.Play();
@@ -248,7 +248,7 @@ public class GameManager : MonoBehaviour
     {
         tilemap.SetTile(hitPosition, null);
         NumberOfHits++;
-        Debug.Log($"Got hit!!");
+        Debug.Log($"Planet hit!!");
 
         SFXSource.clip = config.Explosion;
         SFXSource.Play();
@@ -259,10 +259,10 @@ public class GameManager : MonoBehaviour
         var hasHitPlayer = other.GetComponent<Player>() != null;
         var hasHitPlanet = other.GetComponent<Tilemap>() != null;
         if (hasHitPlanet || hasHitPlayer) {
-            Debug.Log($"Power up destroyed!");
             Destroy(powerUpDrop.gameObject);
             if (hasHitPlayer) {
-                ObtainedSuperSpeed();
+                Debug.Log($"Obtained powerup!");
+                PlayerObtainedSuperSpeed();
             }
         }
     }
