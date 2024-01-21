@@ -58,6 +58,10 @@ public class Config : ScriptableObject
 
     // Player
     public int Speed = 100;
+    [Header("Enemies")]
+    public int ChargerSpeed = 10;
+    public int DodgerSpeed = 5;
+    public float DodgerSinCosWidth = 5f;
 
     // Power up
     [Header("Powerup")]
@@ -97,7 +101,7 @@ public class Config : ScriptableObject
         Vector2 baseDirection = GetDirectionVector2(callingEntity, entityTarget);
         return new Vector3(baseDirection.x, baseDirection.y, 0f);
     }
-    public Quaternion LookAtPlanet(Transform callingEntity, Transform entityTarget)
+    public Quaternion LookAtTarget(Transform callingEntity, Transform entityTarget)
     {
         var offset = 90f;
         Vector2 facingDirection = GetDirectionVector2(callingEntity, entityTarget);

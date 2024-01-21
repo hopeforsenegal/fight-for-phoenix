@@ -12,7 +12,7 @@ public class TestEnem2 : MonoBehaviour
     Vector3 velocity;
 
     void Start() {
-        transform.rotation = enemyBase.LookAtPlanet(transform, target);
+        transform.rotation = enemyBase.LookAtTarget(transform, target);
         direction = enemyBase.GetDirectionVector3(transform, target);
     }
 
