@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
     public Text ingameDialogueText;
     public AudioSource musicSource;
     public AudioSource SFXSource;
+    public float BulletLifetime;
 
     GameState m_GameState;
     Player m_Player;
