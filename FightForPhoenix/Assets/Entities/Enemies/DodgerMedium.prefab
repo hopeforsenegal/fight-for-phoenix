@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3931394654228556699}
   - component: {fileID: 3931394654228556698}
   - component: {fileID: 3931394654228556701}
+  - component: {fileID: 3768944892545370799}
   m_Layer: 0
   m_Name: DodgerMedium
   m_TagString: Untagged
@@ -109,3 +110,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1.35}
   m_EdgeRadius: 0
+--- !u!114 &3768944892545370799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3931394654228556700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58bcf69252a671e41a5ce91e9f58dce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

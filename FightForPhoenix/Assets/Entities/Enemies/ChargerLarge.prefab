@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5855830552281433628}
   - component: {fileID: 1167947510342840472}
   - component: {fileID: 7478902812086137144}
+  - component: {fileID: 8387702533949155650}
   m_Layer: 0
   m_Name: ChargerLarge
   m_TagString: Untagged
@@ -109,3 +110,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 3}
   m_EdgeRadius: 0
+--- !u!114 &8387702533949155650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3095356333242567414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4d9326482ca56446a8b828702bb5116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveSpeed: 2

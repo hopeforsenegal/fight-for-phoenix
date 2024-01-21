@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9113285594808378149}
   - component: {fileID: 9113285594808378148}
   - component: {fileID: 9113285594808378139}
+  - component: {fileID: 7248323931974417744}
   m_Layer: 0
   m_Name: DodgerBig
   m_TagString: Untagged
@@ -109,3 +110,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.3, y: 2.2562456}
   m_EdgeRadius: 0
+--- !u!114 &7248323931974417744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9113285594808378138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58bcf69252a671e41a5ce91e9f58dce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
