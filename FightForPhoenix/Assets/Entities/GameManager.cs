@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
         white.enabled = false;
         black.enabled = true;
 
-        var index = Random.Range(0, config.planetVeryStartDialouge.Length);
+        var index = Random.Range(0, config.planetVeryStartDialouge.Length - 1);
         ingameDialogueText.text = config.planetVeryStartDialouge[index];
         m_TimeUntilDialogueDisappear = config.TimeUntilDialogueDisappear;
 
@@ -150,10 +150,10 @@ public class GameManager : MonoBehaviour
                 m_PreviousNumberOfHits = NumberOfHits;
 
                 if (m_TimeUntilDialogueDisappear > 0.01) {
-                    var index = Random.Range(0, config.planetLosingTooFastDialouge.Length);
+                    var index = Random.Range(0, config.planetLosingTooFastDialouge.Length - 1);
                     ingameDialogueText.text = config.planetLosingTooFastDialouge[index];
                 } else {
-                    var index = Random.Range(0, config.planetHitDialouge.Length);
+                    var index = Random.Range(0, config.planetHitDialouge.Length - 1);
                     ingameDialogueText.text = config.planetHitDialouge[index];
                 }
                 m_TimeUntilDialogueDisappear = config.TimeUntilDialogueDisappear;
