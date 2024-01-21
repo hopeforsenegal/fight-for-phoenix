@@ -215,6 +215,7 @@ public class GameManager : MonoBehaviour
 
             var index = Random.Range(0, config.planetWonDialouge.Length - 1);
             ingameDialogueText.text = config.planetWonDialouge[index];
+            m_TimerText.text = string.Empty;
 
             m_TileWinTimer = config.TileWinTimer;
             m_Tile = Vector3Int.zero;
