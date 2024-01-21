@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 355070231529615382}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.54, y: 4.29, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -110,7 +110,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.66}
+  m_Size: {x: 0.3, y: 0.66}
   m_EdgeRadius: 0
 --- !u!114 &960891664894607640
 MonoBehaviour:
@@ -158,3 +158,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba2f8e5e0bd2caf41a2343cf720697dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilemapGameObject: {fileID: 0}
