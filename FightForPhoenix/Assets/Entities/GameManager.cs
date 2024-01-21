@@ -1,4 +1,3 @@
-using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
@@ -173,7 +172,7 @@ public class GameManager : MonoBehaviour
                 m_ExplosionPlanetIndex = 0;
                 m_ExplosionPlanetTimer = 0;
                 LeanTween.scale(explosion2.gameObject, Vector3.one * 10, 1.5f);
-                LeanTween.scale(explosion.gameObject, Vector3.one * 10, 1.5f).setOnComplete(() =>
+                LeanTween.scale(explosion.gameObject,  Vector3.one * 10, 1.5f).setOnComplete(() =>
                 {
                     m_ShowPlanetExplosion = false;
                     explosion.sprite = null;
@@ -196,8 +195,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayerShoot() {
         if(Actions.Shoot && canShoot){
-            GameObject shot = Instantiate(plasmaShot, 
-                m_Player.BulletSpawn.position, m_Player.transform.rotation);
+            Instantiate(plasmaShot,  m_Player.BulletSpawn.position, m_Player.transform.rotation);
             canShoot = false;
         }
     }
@@ -237,6 +235,8 @@ public class GameManager : MonoBehaviour
         Instantiate(config.PowerUpDropPrefab, position, Quaternion.identity);
     }
 
+
+    // Collisions
     internal void OnEnemyCollision(OnEnemyCollision onEnemyCollision, Collision2D other)
     {
         Destroy(onEnemyCollision.gameObject);
