@@ -1,12 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using TMPro; // Using TextMeshPro for text elements
 
 public class CutsceneManager : MonoBehaviour
 {
     public Image[] images; // Array of images for the cutscene
-    public TMP_Text[] texts; // Array of texts for the cutscene
+    public Text[] texts; // Array of standard UI texts for the cutscene, using UnityEngine.UI.Text
     public float timePerImage = 1f; // Time in seconds for each image
     public string gameSceneName = "GameScene"; // Name of the game scene to load
     // public Config config;
@@ -86,7 +85,7 @@ public class CutsceneManager : MonoBehaviour
         }
     }
 
-    void DisplayImage(Image image, TMP_Text text)
+    void DisplayImage(Image image, Text text)
     {
         foreach (var img in images)
         {
