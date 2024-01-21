@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     public SpriteRenderer explosion;
     public SpriteRenderer explosion2;
     public SpriteRenderer[] stars;
+    public SpriteRenderer asteroid;
     public Transform phoenix;
     public Image loseScreen;
     public Image winScreen;
@@ -317,6 +318,7 @@ public class GameManager : MonoBehaviour
         m_Player.transform.RotateAround(phoenix.transform.position, Vector3.forward, angle);
 
         // Other
+        asteroid.transform.position += new Vector3(0.005f, 0.005f);
     }
 
     public void DropPowerup(Vector3 position)
