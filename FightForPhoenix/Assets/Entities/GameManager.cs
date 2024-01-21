@@ -268,6 +268,9 @@ public class GameManager : MonoBehaviour
         m_PowerUpTimeRemaining = config.ExtraSpeedTime;
         m_Player.TrailRenderer.enabled = true;
         m_Player.TrailRenderer.startColor = config.ExtraSpeedColor;
+
+        SFXSource.clip = config.Powerup;
+        SFXSource.Play();
     }
 
     protected void FixedUpdate()

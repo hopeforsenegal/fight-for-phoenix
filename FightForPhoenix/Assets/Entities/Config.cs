@@ -28,6 +28,7 @@ public class Config : ScriptableObject
     public AudioClip Menu;
     [Header("Audio/SFX")]
     public AudioClip Explosion;
+    public AudioClip Powerup;
 
     [Header("Animations")]
     public Sprite[] planetExplosions;
