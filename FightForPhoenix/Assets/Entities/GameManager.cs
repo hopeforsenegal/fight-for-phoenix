@@ -234,8 +234,7 @@ public class GameManager : MonoBehaviour
 
     public void DropPowerup(Vector3 position) {
         Debug.Log("We should drop a power up");
-
-        var go = Instantiate(config.PowerUpDropPrefab, position, Quaternion.identity);
+        Instantiate(config.PowerUpDropPrefab, position, Quaternion.identity);
     }
 
     internal void OnEnemyCollision(OnEnemyCollision onEnemyCollision, Collision2D other)
@@ -261,7 +260,16 @@ public class GameManager : MonoBehaviour
         SFXSource.Play();
     }
 
-
-
-
+    internal void OnPowerupCollision(PowerUpDrop powerUpDrop, Collider2D other)
+    {
+        var hasHitPlayer = other.GetComponent<Player>() != null;
+        var hasHitPlanet = other.GetComponent<Tilemap>() != null;
+        if (hasHitPlanet || hasHitPlayer) {
+            Debug.Log($"Power up destroyed!");
+            Destroy(powerUpDrop.gameObject);
+            if (hasHitPlayer) {
+                ObtainedSuperSpeed();
+            }
+        }
+    }
 }
