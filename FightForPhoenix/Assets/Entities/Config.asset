@@ -94,6 +94,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b15c1dc87652841c0877b1c5ac7f3197, type: 3}
   - {fileID: 21300000, guid: b15c1dc87652841c0877b1c5ac7f3197, type: 3}
   shakeAmount: {x: 0.3, y: 0.3}
+  winAnimations:
+  - {fileID: 21300000, guid: 3feefba3b2b664469a74086d3dbde214, type: 3}
+  - {fileID: 21300000, guid: 8159725d893374816becbaa53b4375e9, type: 3}
   intro_sprites:
   - {fileID: 21300000, guid: 5faea30c9b7374f64b107cce3674a09c, type: 3}
   - {fileID: 21300000, guid: c11ce08567de341e4a34bbc567afdad3, type: 3}
@@ -143,6 +146,7 @@ MonoBehaviour:
   ChargerSpeed: 9
   DodgerSpeed: 4
   DodgerSinCosWidth: 5
+  EnemyDeathDelay: 0.1
   baseRange: 10
   rangeMod: 10
   spawnDelay: 4

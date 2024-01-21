@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
 
     GameState m_GameState;
     Player m_Player;
+    bool flip;
     float m_PhaseTimeRemaining;
     PowerUpType m_PowerUpType;
     float m_PowerUpTimeRemaining;
@@ -188,8 +189,12 @@ public class GameManager : MonoBehaviour
 
         // Planet to Phoenix Animiation
         if (m_GameState == GameState.Won) {
+
+            winScreen.sprite = flip?config.winAnimations[0]: config.winAnimations[1];
+
             if (m_TileWinTimer < 0) {
                 m_TileWinTimer = config.TileWinTimer;
+                flip = !flip;
 
                 var tilemap = tilemapGameObject.GetComponentInChildren<Tilemap>();
                 tilemap.SetTile(m_Tile, null);

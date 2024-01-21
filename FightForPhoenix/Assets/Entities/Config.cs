@@ -36,6 +36,7 @@ public class Config : ScriptableObject
     public Sprite[] planetExplosions2;
     public Sprite[] phoenix;
     public Vector2 shakeAmount;
+    public Sprite[] winAnimations;
 
     [Header("Dialouge/Intro")]
     public Sprite[] intro_sprites;
