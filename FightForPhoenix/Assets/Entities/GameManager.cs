@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
 
     enum GameState
     {
+        None,
         Playing,
         Lost,
         Won
@@ -37,6 +38,10 @@ public class GameManager : MonoBehaviour
     public SpriteRenderer explosion;
     public SpriteRenderer explosion2;
     public Transform phoenix;
+    public Image loseScreen;
+    public Image winScreen;
+    public Image white;
+    public Image black;
     public Text m_TimerText;
     public Text ingameDialogueText;
     public AudioSource musicSource;
@@ -67,22 +72,35 @@ public class GameManager : MonoBehaviour
     protected void Start()
     {
         NumberOfHits = 0;
-        m_GameState = GameState.Playing;
         TestControlledPlayerEnemies = FindObjectOfType<TestPlayerControlledEnemy>();
         m_Player = FindObjectOfType<Player>();
         m_Player.TrailRenderer.enabled = false;
         m_PhaseTimeRemaining = config.TimeUntilNextPhase;
+        m_TimerText.text = string.Empty;
 
         musicSource.clip = config.Gameplay;
         musicSource.Play();
 
+        loseScreen.enabled = false;
+        winScreen.enabled = false;
+        white.enabled = false;
+        black.enabled = true;
+
         var index = Random.Range(0, config.planetVeryStartDialouge.Length);
         ingameDialogueText.text = config.planetVeryStartDialouge[index];
         m_TimeUntilDialogueDisappear = config.TimeUntilDialogueDisappear;
+
+        m_GameState = GameState.None;
+        LeanTween.color(black.rectTransform, Color.clear, 1.5f).setOnComplete(() =>
+        {
+            m_GameState = GameState.Playing;
+        });
     }
 
     protected void Update()
     {
+        if (m_GameState == GameState.None) return;
+
         // Test Stuff
         if (TestControlledPlayerEnemies) {
             if (Actions.Left) {
