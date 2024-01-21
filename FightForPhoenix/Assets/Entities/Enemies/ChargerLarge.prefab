@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1167947510342840472}
   - component: {fileID: 7478902812086137144}
   - component: {fileID: 8387702533949155650}
+  - component: {fileID: 1358823080}
+  - component: {fileID: 1358823085}
   m_Layer: 0
   m_Name: ChargerLarge
   m_TagString: Untagged
@@ -117,9 +119,42 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3095356333242567414}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4d9326482ca56446a8b828702bb5116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 2
+--- !u!50 &1358823080
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3095356333242567414}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &1358823085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3095356333242567414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba2f8e5e0bd2caf41a2343cf720697dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
