@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 8b43179906de14c2ba494b2804cec649
+  - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/AndrewTest.unity
+    guid: 0cba0a43044e8f04d901de9f7ae06c27
+  - enabled: 1
+    path: Assets/Scenes/EntityTest.unity
+    guid: 54383203df0b25641900ce4904b597b9
+  - enabled: 1
+    path: Assets/Scenes/Kiki M.unity
+    guid: 8e810781cefd34d6bb197e67b42ffb5a
   m_configObjects: {}
