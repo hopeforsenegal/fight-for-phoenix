@@ -83,11 +83,9 @@ public class Config : ScriptableObject
     //Entity will try to slam into planet
     public bool PlanetSeeking;
 
-    public Vector3 WaveMove(Vector3 direction, float counter, bool sine = true)
+    public Vector3 WaveMove(float counter, bool sine = true)
     {
-        float slideDirection;
-        slideDirection = sine ? Mathf.Sin(counter) : Mathf.Cos(counter);
-        return new Vector3(0f, slideDirection, 0f) * WaveSize;
+        return sine ? Mathf.Sin(counter) : Mathf.Cos(counter);
     }
 
     public Vector2 GetDirectionVector2(Transform callingEntity, Transform entityTarget)

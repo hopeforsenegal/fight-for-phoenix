@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class MoveWave : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [SerializeField] float waveSize = 2f;
+    [SerializeField] bool useSine = true;
+    GameManager _gm;
+    float counterMax;
+    float counter = 0f;
+
+    void Start() {
+        _gm = FindObjectOfType<GameManager>();
+        counterMax = Mathf.PI * 2; //ensure complete revolution up and down
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    void FixedUpdate() {
+        if(counter > counterMax) counter = 0f;
+        counter += Time.deltaTime;
         
+        transform.localPosition += new Vector3(1f,0f,0f) * (_gm.config.WaveMove(counter) * waveSize);
     }
 }
