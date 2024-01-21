@@ -22,7 +22,6 @@ public static class Actions
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject[] Enemies; 
     public static int NumberOfHits { get; set; }
 
     public static Vector3Int[] PhoenixTilesToRemove = new Vector3Int[] { Vector3Int.zero, new Vector3Int(0, -1, 0), new Vector3Int(-1, 0, 0), new Vector3Int(-1, -1, 0), };
