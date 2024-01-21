@@ -6,11 +6,25 @@ public class EnemySpawner : MonoBehaviour
 {
     public float baseRange;
     public float rangeMod;
+    public float freqOfSpawn;
     [SerializeField] GameObject[] enemies;
+    float curSpawnTimerVal = 0f;
 
     void Start()
     {
         SpawnEnemy();
+    }
+
+    void Update() {
+        curSpawnTimerVal = SpawnEnemyTimer(curSpawnTimerVal);
+    }
+
+    float SpawnEnemyTimer(float counter) {
+        if(counter > freqOfSpawn) {
+            SpawnEnemy();
+            counter = 0f;
+        }
+        return counter += Time.deltaTime;
     }
 
     Vector3 RandomSpawnPos() {
