@@ -163,10 +163,10 @@ public class GameManager : MonoBehaviour
             explosion2.sprite = UpdateSpriteAnimation(config.planetExplosions2, 0.5f, ref m_ExplosionPlanetIndex2, ref m_ExplosionPlanetTimer2);
         }
 
-        if (NumberOfHits > config.MaxNumberOfPlanetHealth || Actions.TestLose) {
+        if ((NumberOfHits > config.MaxNumberOfPlanetHealth || Actions.TestLose) && m_GameState == GameState.Playing) {
             m_GameState = GameState.Lost;
         }
-        if (m_PhaseTimeRemaining <= 0 || Actions.TestWin) {
+        if ((m_PhaseTimeRemaining <= 0 || Actions.TestWin) && m_GameState == GameState.Playing) {
             m_GameState = GameState.Won;
         }
         if (m_PowerUpTimeRemaining <= 0) {
@@ -195,7 +195,6 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-
 
         var hasChangedState = current != m_GameState;
         if (hasChangedState && m_GameState == GameState.Won) {
