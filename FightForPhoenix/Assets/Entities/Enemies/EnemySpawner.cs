@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     public float baseRange;
     public float rangeMod;
-    public float freqOfSpawn;
+    public float spawnDelay;
     [SerializeField] GameObject[] enemies;
     float curSpawnTimerVal = 0f;
 
@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
     float SpawnEnemyTimer(float counter) {
-        if(counter > freqOfSpawn) {
+        if(counter > spawnDelay) {
             SpawnEnemy();
             counter = 0f;
         }
