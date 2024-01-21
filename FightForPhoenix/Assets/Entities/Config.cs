@@ -39,6 +39,7 @@ public class Config : ScriptableObject
 
     [Header("Dialouge/Intro")]
     public Sprite[] intro_sprites;
+
     public string[] intro_strings;
     [Header("Dialouge/Ingame")]
     public int TimeUntilDialogueDisappear = 3;
