@@ -419,7 +419,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -579,6 +579,7 @@ MonoBehaviour:
   ingameDialogueText: {fileID: 2053110012}
   musicSource: {fileID: 1679913103}
   SFXSource: {fileID: 1734725986}
+  BulletLifetime: 2
 --- !u!4 &637083240
 Transform:
   m_ObjectHideFlags: 0
@@ -705,6 +706,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3014328306864792337, guid: 75afba9a4f6f13946b03e8ad8c815898, type: 3}
+      propertyPath: spawnDelay
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3014328306864792337, guid: 75afba9a4f6f13946b03e8ad8c815898, type: 3}
       propertyPath: freqOfSpawn
       value: 10
@@ -2048,7 +2053,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1790081508}
   - component: {fileID: 1790081509}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: phoenix1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
