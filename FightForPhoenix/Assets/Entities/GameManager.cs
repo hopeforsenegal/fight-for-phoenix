@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
     float m_PowerUpTimeRemaining;
     int m_PreviousNumberOfHits;
     float m_TimeUntilDialogueDisappear;
+    float curSpawnTimerVal = 0f;
     // Shoot
     float currentFireTimer = 0f;
     bool canShoot = true;
@@ -343,9 +344,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("We should drop a power up...");
         Instantiate(config.PowerUpDropPrefab, position, Quaternion.identity);
     }
-
-
-    float curSpawnTimerVal = 0f;
 
     float SpawnEnemyTimer(float counter)
     {
