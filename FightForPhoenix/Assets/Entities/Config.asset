@@ -18,7 +18,7 @@ MonoBehaviour:
   Level_Transition: {fileID: 8300000, guid: 67865a1bb6a03491c8e794ff11faa241, type: 3}
   Lose: {fileID: 8300000, guid: f42f6c16748704d38b5ec5733903d1e8, type: 3}
   Menu: {fileID: 8300000, guid: 7e823b92b26e940d5a435a28584a2a07, type: 3}
-  Explosion: {fileID: 8300000, guid: 23fca5fa586c4403d81b3210234e9424, type: 3}
+  Explosion: {fileID: 8300000, guid: f8421bbdf5e7242399efb01e8bb41b17, type: 3}
   Powerup: {fileID: 8300000, guid: 0801ee1294e4f40d18a8ec825437cbc9, type: 3}
   planetExplosions:
   - {fileID: 21300000, guid: 20805c632c52da54a83372817b14baa1, type: 3}
