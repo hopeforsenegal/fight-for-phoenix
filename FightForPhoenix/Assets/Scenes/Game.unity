@@ -993,7 +993,7 @@ GameObject:
   - component: {fileID: 1120745434}
   - component: {fileID: 1120745433}
   - component: {fileID: 1120745435}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Planet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1733,7 +1733,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1629256831}
   - component: {fileID: 1629256830}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2189,7 +2189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1790081508}
   - component: {fileID: 1790081509}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: phoenix1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
