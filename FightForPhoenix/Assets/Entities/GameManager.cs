@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
@@ -213,6 +214,16 @@ public class GameManager : MonoBehaviour
             white.color = Color.clear;
             LeanTween.color(white.rectTransform, Color.white, 4f).setOnComplete(() =>
             {
+                winScreen.enabled = true;
+                winScreen.color = Color.clear;
+                LeanTween.color(winScreen.rectTransform, Color.white, 0.5f).setOnComplete(() =>
+                {
+                    LeanTween.delayedCall(gameObject, 5f, () =>
+                    {
+                        // :GameOver
+                        SceneManager.LoadScene("MainMenu");
+                    });
+                });
             });
         }
         if (hasChangedState && m_GameState == GameState.Lost) {
@@ -235,7 +246,22 @@ public class GameManager : MonoBehaviour
                    m_ShowPlanetExplosion = false;
                    explosion.sprite = null;
                    explosion2.sprite = null;
-                   Debug.Log("Now maybe show the Game over screen... after a fade to and from black?");
+
+                    black.enabled = true;
+                    black.color = Color.clear;
+                    LeanTween.color(black.rectTransform, Color.white, 4f).setOnComplete(() =>
+                    {
+                        loseScreen.enabled = true;
+                        loseScreen.color = Color.clear;
+                        LeanTween.color(loseScreen.rectTransform, Color.white, 0.5f).setOnComplete(() =>
+                        {
+                            LeanTween.delayedCall(gameObject, 5f, () =>
+                            {
+                                // :GameOver
+                                SceneManager.LoadScene("MainMenu");
+                            });
+                        });
+                    });
                 });
             });
         }
