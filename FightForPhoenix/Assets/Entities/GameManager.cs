@@ -43,15 +43,16 @@ public class GameManager : MonoBehaviour
     public SpriteRenderer[] stars;
     public SpriteRenderer asteroid;
     public SpriteRenderer phoenix;
+    [Header("UI")]
     public Image loseScreen;
     public Image winScreen;
     public Image white;
     public Image black;
     public Text m_TimerText;
     public Text ingameDialogueText;
+    [Header("Audio")]
     public AudioSource musicSource;
     public AudioSource SFXSource;
-    public float BulletLifetime;
 
     GameState m_GameState;
     Player m_Player;

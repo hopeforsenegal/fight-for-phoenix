@@ -11,8 +11,9 @@ public class Bullet : MonoBehaviour
             gameObject.AddComponent<MoveStraight>();
         }
     }
-    void Start() {
-        Destroy(gameObject, m_GameManager.BulletLifetime);
+    void Start()
+    {
+        Destroy(gameObject, m_GameManager.config.BulletLifetime);
     }
     void OnTriggerEnter2D(Collider2D other)
     {
