@@ -131,9 +131,20 @@ MonoBehaviour:
   TileWinTimer: 0.5
   Speed: 55
   FireRate: 0.2
+  BulletLifetime: 2
   ChargerSpeed: 10
   DodgerSpeed: 5
   DodgerSinCosWidth: 5
+  baseRange: 10
+  rangeMod: 10
+  spawnDelay: 2
+  enemies:
+  - {fileID: 3095356333242567414, guid: 5c0e1798a45245541a24c0c50ba09ca1, type: 3}
+  - {fileID: 804488690487214666, guid: cab553082b447da4f89518c642af5f24, type: 3}
+  - {fileID: 355070231529615382, guid: 6b697c21065ab5341bfeea032c9d0078, type: 3}
+  - {fileID: 7106278264620028392, guid: 6a2b439262898784d9e895ca2a224355, type: 3}
+  - {fileID: 1189894961957445979, guid: 05053a62118b35f49a8956371adf99c5, type: 3}
+  - {fileID: 5031450268953695996, guid: cd97ac0099478c746b54281fe7d4e8af, type: 3}
   TrailLength: 0.5
   DropRate: 0.2
   PowerUpDropPrefab: {fileID: 7319834146705539355, guid: 97c1427c759ce4563a43d013fcb12922, type: 3}

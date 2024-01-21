@@ -107,6 +107,8 @@ public class GameManager : MonoBehaviour
             SpriteRenderer star = stars[i];
             LeanTween.color(star.gameObject, new Color(1, 1, 1, 0.4f), 1.5f * (i + 1.1f)).setLoopPingPong();
         }
+
+        SpawnEnemy();
     }
 
     protected void Update()
@@ -121,6 +123,7 @@ public class GameManager : MonoBehaviour
             DropPowerup(new Vector3(0, 2.5f, 0));
         }
 
+        curSpawnTimerVal = SpawnEnemyTimer(curSpawnTimerVal);
         PlayerShoot(); //test shoot
         ShotTimer();
 
@@ -339,6 +342,37 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("We should drop a power up...");
         Instantiate(config.PowerUpDropPrefab, position, Quaternion.identity);
+    }
+
+
+    float curSpawnTimerVal = 0f;
+
+    float SpawnEnemyTimer(float counter)
+    {
+        if (counter > config.spawnDelay) {
+            SpawnEnemy();
+            counter = 0f;
+        }
+        return counter += Time.deltaTime;
+    }
+
+    Vector3 RandomSpawnPos()
+    {
+        float randomX = Random.Range(-config.baseRange, config.baseRange);
+        float randomY = Random.Range(-config.baseRange, config.baseRange);
+
+        if (randomX < 1) randomX -= config.rangeMod;
+        else randomX += config.rangeMod;
+        if (randomY < 1) randomY -= config.rangeMod;
+        else randomY += config.rangeMod;
+
+        return new Vector3(randomX, randomY, 0f);
+    }
+
+    public void SpawnEnemy()
+    {
+        GameObject randomEnemy = config.enemies[Random.Range(0, config.enemies.Length - 1)];
+        Instantiate(randomEnemy, RandomSpawnPos(), Quaternion.identity);
     }
 
 
