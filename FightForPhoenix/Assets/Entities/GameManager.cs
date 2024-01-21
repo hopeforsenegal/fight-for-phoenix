@@ -22,7 +22,6 @@ public static class Actions
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject[] Enemies; 
     public static int NumberOfHits { get; set; }
 
     public static Vector3Int[] PhoenixTilesToRemove = new Vector3Int[] { Vector3Int.zero, new Vector3Int(0, -1, 0), new Vector3Int(-1, 0, 0), new Vector3Int(-1, -1, 0), };
@@ -117,12 +116,14 @@ public class GameManager : MonoBehaviour
         if (m_GameState == GameState.None) return;
 
         // Test Stuff
+#if UNITY_EDITOR
         if (Actions.TestSuperSpeed) {
             PlayerObtainedSuperSpeed();
         }
         if (Actions.TestPowerupDrop) {
             DropPowerup(new Vector3(0, 2.5f, 0));
         }
+#endif
 
         // :Timers
         m_PhaseTimeRemaining -= Time.deltaTime;
