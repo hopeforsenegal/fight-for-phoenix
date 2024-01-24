@@ -701,7 +701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 789393996}
   text: {fileID: 1199514631}
-  timePerImage: 3
+  timePerImage: 6
   gameSceneName: Game
   config: {fileID: 11400000, guid: 4fbc88fe70af640ffa0b4f5110b749f5, type: 2}
 --- !u!4 &1904155980

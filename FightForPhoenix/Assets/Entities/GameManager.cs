@@ -10,7 +10,7 @@ public static class Actions
     public static bool Left  => Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
     public static bool Right => Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
 
-    public static bool Shoot => Input.GetKey(KeyCode.Space);
+    public static bool Shoot => Input.GetKeyDown(KeyCode.Space);
 
     // Take these out once we like these sequences
     public static bool TestLose => Input.GetKey(KeyCode.Alpha1);
